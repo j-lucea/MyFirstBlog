@@ -19,7 +19,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="templates/startbootstrap-clean-blog/index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.php">My First Blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -35,11 +35,6 @@
     </div>
 </nav>
 <?= $content ?>
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
-        </div>
-    </div>
-</div>
 <!-- Footer-->
 <footer class="border-top">
     <div class="container px-4 px-lg-5">

@@ -38,8 +38,13 @@ foreach ($posts as $post) {
     <!-- Divider-->
     <hr class="my-4" />
     <?php
-}
-?>
+    }
+    ?>
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="index.php">Plus d'articles</a></div>
+        </div>
+    </div>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout.php') ?>
