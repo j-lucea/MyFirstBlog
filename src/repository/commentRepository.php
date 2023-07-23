@@ -59,7 +59,7 @@ class CommentRepository
     public function createComment(string $post, string $author, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'INSERT INTO p5_comment(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())'
+            'INSERT INTO p5_comment(post_id, user_id, content, created_at) VALUES(?, ?, ?, NOW())'
         );
         $affectedLines = $statement->execute([$post, $author, $comment]);
 
