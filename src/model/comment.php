@@ -9,9 +9,11 @@ use Application\Lib\Database\DatabaseConnection;
 class Comment
 {
     public string $identifier;
-    public string $author;
+    public string $content;
+    public bool $status;
     public string $frenchCreationDate;
-    public string $comment;
+    public string $frenchUpdateDate;
+    public string $author;
     public string $post;
 }
 

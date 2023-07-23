@@ -1,5 +1,7 @@
 <?php
 
+namespace Application\Repository\CommentRepository;
+
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Comment\Comment;
 
@@ -10,7 +12,7 @@ class CommentRepository
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM p5_comment WHERE post_id = ? ORDER BY comment_date DESC"
+            "SELECT c.id, c.content, c.status , DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, u.first_name , c.post_id FROM p5_comment c JOIN p5_user u ON c.user_id = u.id WHERE post_id = ? ORDER BY created_at DESC"
         );
         $statement->execute([$post]);
 
@@ -18,9 +20,11 @@ class CommentRepository
         while (($row = $statement->fetch())) {
             $comment = new Comment();
             $comment->identifier = $row['id'];
-            $comment->author = $row['author'];
+            $comment->content = $row['content'];
+            $comment->status = $row['status'];
             $comment->frenchCreationDate = $row['french_creation_date'];
-            $comment->comment = $row['comment'];
+            $comment->frenchUpdateDate = $row['french_update_date'];
+            $comment->author = $row['user_id'];
             $comment->post = $row['post_id'];
 
             $comments[] = $comment;
@@ -32,7 +36,7 @@ class CommentRepository
     public function getComment(string $identifier): ?Comment
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM p5_comment WHERE id = ?"
+            "SELECT id, content, status, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, user_id, post_id FROM p5_comment WHERE id = ?"
         );
         $statement->execute([$identifier]);
 
@@ -43,9 +47,10 @@ class CommentRepository
 
         $comment = new Comment();
         $comment->identifier = $row['id'];
-        $comment->author = $row['author'];
+        $comment->content = $row['content'];
+        $comment->status = $row['status'];
+        $comment->author = $row['first_name'];
         $comment->frenchCreationDate = $row['french_creation_date'];
-        $comment->comment = $row['comment'];
         $comment->post = $row['post_id'];
 
         return $comment;
