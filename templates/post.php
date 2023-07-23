@@ -1,33 +1,17 @@
 <?php $title = "Le blog de l'AVBN"; ?>
 
 <?php ob_start(); ?>
-<!--<h1>Le super blog de l'AVBN !</h1>
-<p><a href="index.php">Retour à la liste des billets</a></p>-->
-
-<!--<div class="news">
-    <h3>
-        <?php /*= htmlspecialchars($post->title) */?>
-        <em>le <?php /*= $post->frenchCreationDate */?></em>
-    </h3>
-
-    <p>
-        <?php /*= nl2br(htmlspecialchars($post->content)) */?>
-    </p>
-</div>-->
-
-
-
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('templates/assetsg.jpg')">
+<header class="masthead" style="background-image: url(<?= htmlspecialchars($post->image) ?>)">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
                     <h1><?= htmlspecialchars($post->title) ?></h1>
-                    <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                    <h2 class="subheading"><?= htmlspecialchars($post->chapo) ?></h2>
                     <span class="meta">
-<!--                                Publié par --><?php //= htmlspecialchars($post->author) ?>
+                                Publié par <?= htmlspecialchars($post->author) ?>
                                 <em>le <?= $post->frenchCreationDate ?></em>
                             </span>
                 </div>
@@ -47,7 +31,7 @@
                 foreach ($comments as $comment) {
                     ?>
                     <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
-                    <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
+                    <p><?= nl2br(htmlspecialchars($comment->content)) ?></p>
                     <?php
                 }
                 ?>

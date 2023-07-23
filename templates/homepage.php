@@ -26,12 +26,11 @@ foreach ($posts as $post) {
     <div class="post-preview">
         <a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">
             <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
-            <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->content)); ?></h3>
+            <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->chapo)); ?></h3>
         </a>
         <p class="post-meta">
-            <!-- Part in order to display author later
-            Par
-            <a href="#!"><em>le <?= $post->author; ?></em></a> -->
+            Publié par
+            <a href="#!"><em><?= $post->author; ?></em></a>
             <em>le <?= $post->frenchCreationDate; ?></em>
         </p>
     </div>
