@@ -19,28 +19,26 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-<?php
-foreach ($posts as $post) {
-    ?>
-    <!-- Post preview-->
-    <div class="post-preview">
-        <a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">
-            <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
-            <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->chapo)); ?></h3>
-        </a>
-        <p class="post-meta">
-            Publié par
-            <a href="#!"><em><?= $post->author; ?></em></a>
-            <em>le <?= $post->frenchCreationDate; ?></em>
-        </p>
-    </div>
-    <!-- Divider-->
-    <hr class="my-4" />
-    <?php
-    }
-    ?>
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="index.php?action=postsList">Plus d'articles</a></div>
+            <?php
+            foreach ($posts as $post) {
+                ?>
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">
+                        <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
+                        <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->chapo)); ?></h3>
+                    </a>
+                    <p class="post-meta">
+                        Publié par
+                        <a href="#!"><em><?= $post->author; ?></em></a>
+                        <em>le <?= $post->frenchCreationDate; ?></em>
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <?php
+            }
+            ?>
         </div>
     </div>
 </div>

@@ -4,11 +4,13 @@ require_once('src/controllers/comment/add.php');
 require_once('src/controllers/comment/update.php');
 require_once('src/controllers/homepage.php');
 require_once('src/controllers/post.php');
+require_once('src/controllers/postsList.php');
 
 use Application\Controllers\Comment\Add\AddComment;
 use Application\Controllers\Comment\Update\UpdateComment;
 use Application\Controllers\Homepage\Homepage;
 use Application\Controllers\Post\Post;
+use Application\Controllers\PostsList\PostsList;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -41,6 +43,8 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
+        } elseif ($_GET['action'] === 'postsList') {
+            (new PostsList())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
