@@ -5,12 +5,14 @@ require_once('src/controllers/comment/update.php');
 require_once('src/controllers/homepage.php');
 require_once('src/controllers/post.php');
 require_once('src/controllers/postsList.php');
+require_once('src/controllers/contact.php');
 
 use Application\Controllers\Comment\Add\AddComment;
 use Application\Controllers\Comment\Update\UpdateComment;
 use Application\Controllers\Homepage\Homepage;
 use Application\Controllers\Post\Post;
 use Application\Controllers\PostsList\PostsList;
+use Application\Controllers\Contact\Contact;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -45,6 +47,8 @@ try {
             }
         } elseif ($_GET['action'] === 'postsList') {
             (new PostsList())->execute();
+        } elseif ($_GET['action'] === 'contact') {
+            (new Contact())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
