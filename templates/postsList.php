@@ -1,4 +1,4 @@
-<?php $title = "My First Blog"; ?>
+<?php $title = "Liste des articles"; ?>
 
 <?php ob_start(); ?>
 <!-- <p>Derniers billets du blog :</p> -->

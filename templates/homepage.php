@@ -1,4 +1,4 @@
-<?php $title = "My First Blog"; ?>
+<?php $title = "Accueil"; ?>
 
 <?php ob_start(); ?>
 <!-- <p>Derniers billets du blog :</p> -->
@@ -9,7 +9,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading">An introduction to my professional life</span>
+                    <span class="subheading">Découvrez ce qui me passionne</span>
                 </div>
             </div>
         </div>

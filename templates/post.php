@@ -1,4 +1,4 @@
-<?php $title = "Le blog de l'AVBN"; ?>
+<?php $title = $post->title; ?>
 
 <?php ob_start(); ?>
 

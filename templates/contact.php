@@ -1,4 +1,4 @@
-<?php $title = "Le blog de l'AVBN"; ?>
+<?php $title = "Contact"; ?>
 
 <?php ob_start(); ?>
 <!-- Page Header-->
