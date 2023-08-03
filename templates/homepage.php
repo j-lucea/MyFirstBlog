@@ -1,7 +1,6 @@
 <?php $title = "Accueil"; ?>
 
 <?php ob_start(); ?>
-<!-- <p>Derniers billets du blog :</p> -->
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('src/public/assets/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">

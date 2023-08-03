@@ -12,7 +12,7 @@ class CommentRepository
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT c.id, c.content, c.status , DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, DATE_FORMAT(c.updated_at, '%d/%m/%Y à %Hh%imin%ss') AS french_update_date, u.first_name , c.post_id FROM p5_comment c JOIN p5_user u ON c.user_id = u.id WHERE post_id = ? ORDER BY created_at DESC"
+            "SELECT c.id, c.content, c.status , DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, DATE_FORMAT(c.updated_at, '%d/%m/%Y à %Hh%imin%ss') AS french_update_date, u.first_name , c.post_id FROM p5_comment c JOIN p5_user u ON c.user_id = u.id WHERE post_id = ? ORDER BY c.created_at DESC"
         );
         $statement->execute([$post]);
 
