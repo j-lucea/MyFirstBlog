@@ -1,25 +1,5 @@
 <?php $title = "Connexion";?>
 
-<!-- Form valid -->
-<?php
-/*if (isset($_POST['mail']) && isset($_POST['password'])) {
-    foreach ($users as $user) {
-        if (
-            $user['mail'] === $_POST['mail'] &&
-            $user['password'] === $_POST['password']
-        ) {
-            $loggedUser = [
-                'email' => $user['mail'],
-                ];
-        } else {
-            $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-                $_POST['mail'],
-                $_POST['password']
-            );
-        }
-    }
-}*/?>
-
 <?php ob_start(); ?>
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('src/public/assets/img/home-bg.jpg')">
@@ -34,39 +14,53 @@
         </div>
     </div>
 </header>
+<!-- Form valid -->
+<?php
+if (isset($_POST['login']) && isset($_POST['password'])) {?>
+    <div class="alert alert-success" role="alert">
+        Bonjour <?php echo $_POST['login']; ?> et bienvenue sur le site !
+    </div>
+<?php } else { ?>
+    <p>Ricococo</p>
 <!-- Login form -->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <!--If unidentified user, display the form-->
             <?php if(!isset($loggedUser)): ?>
-            <form action="index.php" method="post">
+            <form action="index.php?action=login" method="post">
                 <!-- If error, we show it -->
                 <?php if(isset($errorMessage)) : ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo $errorMessage; ?>
                 </div>
                 <?php endif; ?>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Adresse mail</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="vous@exemple.com">
+                <div class="form-floating">
+                    <label for="login" class="form-label">Identifiant</label>
+                    <input type="login" class="form-control" id="login" name="login" required>
                 </div>
-                <div class="mb-3">
+                <div class="form-floating">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control" id="password"
+                           name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <br>
+                <button type="submit" id="submitButton"
+                        class="btn btn-primary text-uppercase center-block">Envoyer
+                </button>
             </form>
-                <!-- If the user is correctly logged, we show a success message -->
+            <br>
+            <!-- If the user is correctly logged, we show a success message -->
             <?php else: ?>
                 <div class="alert alert-success" role="alert">
-                    Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
+                    Bonjour <?php echo $loggedUser['login']; ?> et bienvenue sur le site !
                 </div>
             <?php endif; ?>
 
         </div>
     </div>
 </div>
+<?php } ?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout.php') ?>

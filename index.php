@@ -39,7 +39,8 @@ try {
         } elseif ($_GET['action'] === 'updateComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
-                // It sets the input only when the HTTP method is POST (ie. the form is submitted).
+                // It sets the input only when the HTTP method is POST
+                // (ie. the form is submitted).
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;
@@ -67,7 +68,8 @@ try {
                         'email' => $user['mail'],
                     ];
                 } else {
-                    $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
+                    $errorMessage = sprintf('Les informations envoyées 
+                    ne permettent pas de vous identifier : (%s/%s)',
                         $_POST['mail'],
                         $_POST['password']
                     );

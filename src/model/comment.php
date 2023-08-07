@@ -4,7 +4,7 @@ namespace Application\Model\Comment;
 
 class Comment
 {
-    public int $identifier;
+    public int $id;
     public string $content;
     public bool $status;
     public string $frenchCreationDate;
@@ -13,7 +13,7 @@ class Comment
     public string $post;
 
     /**
-     * @param int $identifier
+     * @param int $id
      * @param string $content
      * @param bool $status
      * @param string $frenchCreationDate
@@ -21,25 +21,26 @@ class Comment
      * @param string $author
      * @param string $post
      */
-/*    public function __construct(int $identifier, string $content, bool $status, string $frenchCreationDate, string $frenchUpdateDate, string $author, string $post)
+    public function __construct(int $id, string $content, bool $status,
+      string $frenchCreationDate, string $frenchUpdateDate, string $author, string $post)
     {
-        $this->identifier = $identifier;
+        $this->id = $id;
         $this->content = $content;
         $this->status = $status;
         $this->frenchCreationDate = $frenchCreationDate;
         $this->frenchUpdateDate = $frenchUpdateDate;
         $this->author = $author;
         $this->post = $post;
-    }*/
-
-    public function getIdentifier(): int
-    {
-        return $this->identifier;
     }
 
-    public function setIdentifier(int $identifier): void
+    public function getId(): int
     {
-        $this->identifier = $identifier;
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getContent(): string

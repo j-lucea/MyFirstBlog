@@ -23,7 +23,7 @@ foreach ($posts as $post) {
     ?>
     <!-- Post preview-->
     <div class="post-preview">
-        <a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">
+        <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
             <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
             <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->chapo)); ?></h3>
         </a>
@@ -39,7 +39,10 @@ foreach ($posts as $post) {
     }
     ?>
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="index.php?action=postsList">Plus d'articles</a></div>
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary text-uppercase" href="index.php?action=postsList">
+                    Plus d'articles</a>
+            </div>
         </div>
     </div>
 </div>

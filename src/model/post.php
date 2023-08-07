@@ -4,7 +4,8 @@ namespace Application\Model\Post;
 
 class Post
 {
-    public int $identifier;
+    public int $id;
+    public string $title;
     public string $chapo;
     public string $content;
     public string $image;
@@ -14,7 +15,8 @@ class Post
     public string $author;
 
     /**
-     * @param int $identifier
+     * @param int $id
+     * @param string $title
      * @param string $chapo
      * @param string $content
      * @param string $image
@@ -23,9 +25,13 @@ class Post
      * @param string $category
      * @param string $author
      */
-/*    public function __construct(int $identifier, string $chapo, string $content, string $image, string $frenchCreationDate, string $frenchUpdateDate, string $category, string $author)
+    public function __construct(int $id, string $title, string $chapo,
+                                string $content, string $image,
+                                string $frenchCreationDate, string $frenchUpdateDate,
+                                string $category, string $author)
     {
-        $this->identifier = $identifier;
+        $this->id = $id;
+        $this->title = $title;
         $this->chapo = $chapo;
         $this->content = $content;
         $this->image = $image;
@@ -33,16 +39,26 @@ class Post
         $this->frenchUpdateDate = $frenchUpdateDate;
         $this->category = $category;
         $this->author = $author;
-    }*/
-
-    public function getIdentifier(): int
-    {
-        return $this->identifier;
     }
 
-    public function setIdentifier(int $identifier): void
+    public function getid(): int
     {
-        $this->identifier = $identifier;
+        return $this->id;
+    }
+
+    public function setid(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
     }
 
     public function getChapo(): string
@@ -114,6 +130,5 @@ class Post
     {
         $this->author = $author;
     }
-
 
 }

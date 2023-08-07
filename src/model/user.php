@@ -9,8 +9,10 @@ class User {
     public string $login;
     public string $password;
     public string $mail;
-    public string $role;
+    public bool $role;
+    public string $avatar;
     public string $frenchCreationDate;
+    public string $frenchUpdateDate;
 
     /**
      * @param int $id
@@ -19,10 +21,15 @@ class User {
      * @param string $login
      * @param string $password
      * @param string $mail
-     * @param string $role
+     * @param bool $role
+     * @param string $avatar
      * @param string $frenchCreationDate
+     * @param string $frenchUpdateDate
      */
-    public function __construct(int $id, string $lastName, string $firstName, string $login, string $password, string $mail, string $role, string $frenchCreationDate)
+    public function __construct(int $id, string $lastName, string $firstName,
+                                string $login, string $password, string $mail,
+                                bool $role, string $avatar, string $frenchCreationDate,
+                                string $frenchUpdateDate)
     {
         $this->id = $id;
         $this->lastName = $lastName;
@@ -31,7 +38,9 @@ class User {
         $this->password = $password;
         $this->mail = $mail;
         $this->role = $role;
+        $this->avatar = $avatar;
         $this->frenchCreationDate = $frenchCreationDate;
+        $this->frenchUpdateDate = $frenchUpdateDate;
     }
 
     public function getId(): int
@@ -94,14 +103,24 @@ class User {
         $this->mail = $mail;
     }
 
-    public function getRole(): string
+    public function isRole(): bool
     {
         return $this->role;
     }
 
-    public function setRole(string $role): void
+    public function setRole(bool $role): void
     {
         $this->role = $role;
+    }
+
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(string $avatar): void
+    {
+        $this->avatar = $avatar;
     }
 
     public function getFrenchCreationDate(): string
@@ -113,5 +132,16 @@ class User {
     {
         $this->frenchCreationDate = $frenchCreationDate;
     }
+
+    public function getFrenchUpdateDate(): string
+    {
+        return $this->frenchUpdateDate;
+    }
+
+    public function setFrenchUpdateDate(string $frenchUpdateDate): void
+    {
+        $this->frenchUpdateDate = $frenchUpdateDate;
+    }
+
 
 }
