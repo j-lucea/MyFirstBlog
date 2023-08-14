@@ -18,14 +18,17 @@ class Login
                 $connection = new DatabaseConnection();
                 $userRepository = new UserRepository();
                 $userRepository->connection = $connection;
-                $user = $userRepository->getUser($_POST['login']);
+                $user = $userRepository->getUser(htmlspecialchars($_POST['login']));
                 if (
-                    $user['password'] === $_POST['password']
+                    $user && $user->password === $_POST['password']
                 ) {
+
                     $loggedUser = $user;
+                    $_SESSION['loggedUser'] = $user;
+                    header('Location: index.php');
                 } else {
-                    $errorMessage = sprintf('Les informations envoyées ne permettent 
-                    pas de vous identifier : (%s/%s)');
+                    $errorMessage = sprintf('Les informations envoyées
+                    ne permettent pas de vous identifier');
                 }
         }
         require('templates/login.php');

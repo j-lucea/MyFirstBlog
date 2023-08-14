@@ -29,7 +29,7 @@ class UserRepository
         return $users;
     }
 
-    public function getUser(string $id): ?User
+    public function getUser(string $login): ?User
     {
         $statement = $this->connection->getConnection()->prepare(
             "SELECT id, last_name, first_name , login, password, mail, role, avatar, 
@@ -37,7 +37,7 @@ class UserRepository
             DATE_FORMAT(updated_at, '%d/%m/%Y à %Hh%imin%ss') AS french_update_date 
             FROM p5_user WHERE login = ?"
         );
-        $statement->execute([$id]);
+        $statement->execute([$login]);
         $row = $statement->fetch();
         if ($row === false) {
             return null;

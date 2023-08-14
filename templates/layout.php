@@ -34,8 +34,7 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=postsList">
-                        Liste des articles</a></li>
+                                        href="index.php?action=postsList">Articles</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=login">Se connecter</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"

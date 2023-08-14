@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('src/controllers/comment/add.php');
 require_once('src/controllers/comment/update.php');
 require_once('src/controllers/homepage.php');

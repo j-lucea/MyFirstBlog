@@ -2,13 +2,13 @@
 
 <?php ob_start(); ?>
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('templates/assetst-bg.jpg')">
+<header class="masthead" style="background-image: url('src/public/assets/img/contact-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
                     <h1>Contactez-moi</h1>
-                    <span class="subheading">Des questions ? J'ai des réponses.</span>
+                    <span class="subheading">Des questions ? J'ai les réponses.</span>
                 </div>
             </div>
         </div>
