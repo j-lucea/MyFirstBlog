@@ -1,7 +1,6 @@
-<?php $title = "My First Blog"; ?>
+<?php $title = "Liste des articles"; ?>
 
 <?php ob_start(); ?>
-<!-- <p>Derniers billets du blog :</p> -->
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('src/public/assets/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -9,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading">An introduction to my professional life</span>
+                    <span class="subheading">Découvrez ce qui me passionne</span>
                 </div>
             </div>
         </div>
@@ -22,11 +21,13 @@
             <?php
             foreach ($posts as $post) {
                 ?>
-                <!-- Post preview-->
+                <!-- Posts preview-->
                 <div class="post-preview">
-                    <a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">
+                    <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
                         <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
-                        <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->chapo)); ?></h3>
+                        <h3 class="post-subtitle">
+                            <?= nl2br(htmlspecialchars($post->chapo)); ?>
+                        </h3>
                     </a>
                     <p class="post-meta">
                         Publié par
