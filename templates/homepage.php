@@ -1,7 +1,6 @@
-<?php $title = "My First Blog"; ?>
+<?php $title = "Accueil"; ?>
 
 <?php ob_start(); ?>
-<!-- <p>Derniers billets du blog :</p> -->
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('src/public/assets/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -9,12 +8,21 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading">An introduction to my professional life</span>
+                    <span class="subheading">Découvrez ce qui me passionne</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+    <!-- If the user is correctly logged, we show a success message -->
+<?php var_dump($_SESSION['loggedUser']); ?>
+<?php if(isset($_SESSION['loggedUser'])): ?>
+    <div class="alert alert-success" role="alert">
+        Bonjour <?php echo $_SESSION['loggedUser']->firstName; ?> et bienvenue sur le site !
+
+    </div>
+<?php endif; ?>
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -24,7 +32,7 @@ foreach ($posts as $post) {
     ?>
     <!-- Post preview-->
     <div class="post-preview">
-        <a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">
+        <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
             <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
             <h3 class="post-subtitle"><?= nl2br(htmlspecialchars($post->chapo)); ?></h3>
         </a>
@@ -40,7 +48,10 @@ foreach ($posts as $post) {
     }
     ?>
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="index.php?action=postsList">Plus d'articles</a></div>
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary text-uppercase" href="index.php?action=postsList">
+                    Plus d'articles</a>
+            </div>
         </div>
     </div>
 </div>
