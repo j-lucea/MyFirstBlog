@@ -14,6 +14,13 @@
         </div>
     </div>
 </header>
+<!-- If the user is correctly logged, we show a success message -->
+<?php if(isset($_SESSION)): ?>
+    <div class="alert alert-success" role="alert">
+        Bonjour <?php echo $_SESSION['firstName']; ?> et bienvenue sur le site !
+
+    </div>
+<?php endif; ?>
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">

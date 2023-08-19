@@ -1,8 +1,19 @@
 <?php $title = "Contact"; ?>
 
+<?php
+use Application\PHPMailer\PHPMailer\PHPMailer;
+use Application\PHPMailer\PHPMailer\Exception;
+
+require 'src/phpmailer/src/Exception.php';
+require 'src/phpmailer/src/PHPMailer.php';
+require 'src/phpmailer/src/SMTP.php';
+
+?>
+
 <?php ob_start(); ?>
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('src/public/assets/img/contact-bg.jpg')">
+<header class="masthead" style="background-image:
+        url('src/public/assets/img/contact-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -19,18 +30,12 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>Remplissez ce formulaire pour m'envoyer un message et je reviendrais
-                    vers vous dès que possible !
+                <p>Remplissez ce formulaire pour m'envoyer un message et je
+                    reviendrais vers vous dès que possible !
                 </p>
                 <div class="my-5">
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <!-- Contact Form -->
+                    <form id="contactForm" action="index.php?action=contact">
                         <div class="form-floating">
                             <input class="form-control" id="name" type="text"
                                    placeholder="Entrez votre nom..."
@@ -81,11 +86,6 @@
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
                                 <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="https://startbootstrap.com/solution/contact-forms">
-                                    https://startbootstrap.com/solution/contact-forms
-                                </a>
                             </div>
                         </div>
                         <!-- Submit error message-->
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <!-- Submit Button-->
-                        <button class="btn btn-primary text-uppercase disabled"
+                        <button class="btn btn-primary text-uppercase"
                                 id="submitButton" type="submit">Envoyer
                         </button>
                     </form>
