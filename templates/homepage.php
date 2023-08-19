@@ -16,10 +16,9 @@
 </header>
 
     <!-- If the user is correctly logged, we show a success message -->
-<?php var_dump($_SESSION['loggedUser']); ?>
-<?php if(isset($_SESSION['loggedUser'])): ?>
+<?php if(isset($_SESSION)): ?>
     <div class="alert alert-success" role="alert">
-        Bonjour <?php echo $_SESSION['loggedUser']->firstName; ?> et bienvenue sur le site !
+        Bonjour <?php echo $_SESSION['firstName']; ?> et bienvenue sur le site !
 
     </div>
 <?php endif; ?>
