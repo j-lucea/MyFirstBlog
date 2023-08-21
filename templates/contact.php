@@ -8,7 +8,8 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
                     <h1>Contactez-moi</h1>
-                    <span class="subheading">Des questions ? J'ai les réponses.</span>
+                    <span class="subheading">Des questions ?
+                        J'ai les réponses.</span>
                 </div>
             </div>
         </div>
@@ -19,33 +20,39 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>Remplissez ce formulaire pour m'envoyer un message et je reviendrais
-                    vers vous dès que possible !
+                <p>Remplissez ce formulaire pour m'envoyer un message et je
+                    reviendrais vers vous dès que possible !
                 </p>
                 <div class="my-5">
                     <!-- Contact Form -->
-                    <form id="contactForm" action="index.php?action=contact" method="post">
+                    <form method="post" action="index.php?action=contact">
                         <div class="form-floating">
-                            <input class="form-control" id="name" type="text"
+                            <input class="form-control" id="name"
+                                   name="name" type="text"
                                    placeholder="Entrez votre nom..."
                                    required />
                             <label for="name">Nom</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="email" type="email"
+                            <input class="form-control" id="email"
+                                   name="email" type="email"
                                    placeholder="Entrez votre adresse mail..."
                                   required />
-                            <label for="email">Addresse mail</label>
+                            <label for="email">Adresse mail</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="phone" type="tel"
-                                   placeholder="Entrez votre numéro de téléphone..."
+                            <input class="form-control" id="subject"
+                                   name="subject" type="text"
+                                   placeholder="Entrez le sujet de votre
+                                   message ..."
                                    required />
-                            <label for="phone">Téléphone</label>
+                            <label for="subject">Sujet</label>
                         </div>
                         <div class="form-floating">
                             <textarea class="form-control" id="message"
-                                      placeholder="Entrez votre message ici..."
+                                      name="message"
+                                      placeholder="Entrez votre
+                                      message ici..."
                                       style="height: 12rem" required>
                             </textarea>
                             <label for="message">Message</label>
@@ -55,23 +62,24 @@
                         <!---->
                         <!-- This is what your users will see when the form-->
                         <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
+<!--                        <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
+                                <div class="fw-bolder">Form submission
+                                    successful!</div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Submit error message-->
                         <!---->
                         <!-- This is what your users will see when there is-->
                         <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
+<!--                        <div class="d-none" id="submitErrorMessage">
                             <div class="text-center text-danger mb-3">
                                 Une erreur est survenue
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Submit Button-->
-                        <button class="btn btn-primary text-uppercase"
-                                id="submitButton" type="submit">Envoyer
+                        <button class="btn btn-primary text-uppercase center-block"
+                                type="submit">Envoyer
                         </button>
                     </form>
                 </div>

@@ -2,8 +2,8 @@
 
 namespace Application\Controllers\Contact;
 
-use Application\PHPMailer\PHPMailer\PHPMailer;
-use Application\PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 require 'src/phpmailer/src/Exception.php';
 require 'src/phpmailer/src/PHPMailer.php';
@@ -14,20 +14,35 @@ class Contact
     public function execute()
     {
         if (isset($_POST['name']) && isset($_POST['email'])
-            && isset($_POST['phone']) && isset($_POST['message'])) {
+            && isset($_POST['subject']) && isset($_POST['message'])) {
             $mail = new PHPMailer();
             $mail->IsSMTP();
-            $mail->Host = 'dns106.ovh.net';               //Adresse IP ou DNS du serveur SMTP
-            $mail->Port = 465;                          //Port TCP du serveur SMTP
-            $mail->SMTPAuth = 1;                        //Utiliser l'identification
+            $mail->Host = 'ssl0.ovh.net';
+            $mail->Port = 465;
+            $mail->SMTPAuth = 1;
 
             if($mail->SMTPAuth){
-                $mail->SMTPSecure = 'ssl';               //Protocole de sécurisation des échanges avec le SMTP
-                $mail->Username   =  'contact@jlucea.com';   //Adresse email à utiliser
-                $mail->Password   =  'Nathan2018';         //Mot de passe de l'adresse email à utiliser
+                $mail->SMTPSecure = 'ssl';
+                $mail->Username   =  'contact@jlucea.com';
+                $mail->Password   =  'Nathan2018';
             }
+            $mail->CharSet = 'UTF-8';
+            $mail->smtpConnect();
+            $mail->From       = htmlspecialchars($_POST['email']);
+            $mail->FromName   = htmlspecialchars($_POST['name']);
+            $mail->AddAddress('contact@jlucea.com');
+            $mail->Subject    = htmlspecialchars($_POST['subject']);
+            $mail->WordWrap   = 50;
+            $mail->AltBody = htmlspecialchars($_POST['message']);
+            $mail->IsHTML(false);
+            $mail->MsgHTML($_POST['message']);
+            if (!$mail->send()) {
+                echo $mail->ErrorInfo;
+            } else {
+                header('Location: index.php');
+            }
+        } else {
+            require('templates/contact.php');
         }
-
-        require('templates/contact.php');
     }
 }
