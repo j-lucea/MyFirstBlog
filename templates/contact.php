@@ -1,8 +1,19 @@
 <?php $title = "Contact"; ?>
 
+<?php
+use Application\PHPMailer\PHPMailer\PHPMailer;
+use Application\PHPMailer\PHPMailer\Exception;
+
+require 'src/phpmailer/src/Exception.php';
+require 'src/phpmailer/src/PHPMailer.php';
+require 'src/phpmailer/src/SMTP.php';
+
+?>
+
 <?php ob_start(); ?>
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('src/public/assets/img/contact-bg.jpg')">
+<header class="masthead" style="background-image:
+        url('src/public/assets/img/contact-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -25,7 +36,7 @@
                 </p>
                 <div class="my-5">
                     <!-- Contact Form -->
-                    <form method="post" action="index.php?action=contact">
+                    <form id="contactForm" action="index.php?action=contact">
                         <div class="form-floating">
                             <input class="form-control" id="name"
                                    name="name" type="text"
@@ -78,8 +89,8 @@
                             </div>
                         </div>-->
                         <!-- Submit Button-->
-                        <button class="btn btn-primary text-uppercase center-block"
-                                type="submit">Envoyer
+                        <button class="btn btn-primary text-uppercase"
+                                id="submitButton" type="submit">Envoyer
                         </button>
                     </form>
                 </div>

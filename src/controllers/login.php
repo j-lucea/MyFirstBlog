@@ -22,15 +22,28 @@ class Login
                 if (
                     $user && $user->password === $_POST['password']
                 ) {
-
-                    $loggedUser = $user;
-                    $_SESSION['loggedUser'] = $user;
+                    $this->openSession($user);
                     header('Location: index.php');
                 } else {
                     $errorMessage = sprintf('Les informations envoyées
                     ne permettent pas de vous identifier');
                 }
         }
+
         require('templates/login.php');
+    }
+    private function openSession($user): void
+    {
+        $_SESSION['id'] = $user->id;
+        $_SESSION['firstName'] = $user->firstName;
+        $_SESSION['lastName'] = $user->lastName;
+        $_SESSION['mail'] = $user->mail;
+        $_SESSION['login'] = $user->login;
+        $_SESSION['password'] = $user->password;
+        $_SESSION['mail'] = $user->mail;
+        $_SESSION['role'] = $user->role;
+        $_SESSION['avatar'] = $user->avatar;
+        $_SESSION['frenchCreationDate'] = $user->frenchCreationDate;
+        $_SESSION['frenchUpdateDate'] = $user->frenchUpdateDate;
     }
 }
