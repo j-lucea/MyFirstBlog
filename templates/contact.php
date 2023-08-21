@@ -19,7 +19,8 @@ require 'src/phpmailer/src/SMTP.php';
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
                     <h1>Contactez-moi</h1>
-                    <span class="subheading">Des questions ? J'ai les réponses.</span>
+                    <span class="subheading">Des questions ?
+                        J'ai les réponses.</span>
                 </div>
             </div>
         </div>
@@ -37,66 +38,56 @@ require 'src/phpmailer/src/SMTP.php';
                     <!-- Contact Form -->
                     <form id="contactForm" action="index.php?action=contact">
                         <div class="form-floating">
-                            <input class="form-control" id="name" type="text"
+                            <input class="form-control" id="name"
+                                   name="name" type="text"
                                    placeholder="Entrez votre nom..."
-                                   data-sb-validations="required" />
+                                   required />
                             <label for="name">Nom</label>
-                            <div class="invalid-feedback"
-                                 data-sb-feedback="name:required">Un nom est nécessaire.
-                            </div>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="email" type="email"
+                            <input class="form-control" id="email"
+                                   name="email" type="email"
                                    placeholder="Entrez votre adresse mail..."
-                                   data-sb-validations="required,email" />
-                            <label for="email">Addresse mail</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">
-                                Une adresse mail est nécessaire.
-                            </div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">
-                                Adresse mail invalide.
-                            </div>
+                                  required />
+                            <label for="email">Adresse mail</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="phone" type="tel"
-                                   placeholder="Entrez votre numéro de téléphone..."
-                                   data-sb-validations="required" />
-                            <label for="phone">Téléphone</label>
-                            <div class="invalid-feedback"
-                                 data-sb-feedback="phone:required">
-                                Un numéro de téléphone est nécessaire.
-                            </div>
+                            <input class="form-control" id="subject"
+                                   name="subject" type="text"
+                                   placeholder="Entrez le sujet de votre
+                                   message ..."
+                                   required />
+                            <label for="subject">Sujet</label>
                         </div>
                         <div class="form-floating">
                             <textarea class="form-control" id="message"
-                                      placeholder="Entrez votre message ici..."
-                                      style="height: 12rem" data-sb-validations="required">
+                                      name="message"
+                                      placeholder="Entrez votre
+                                      message ici..."
+                                      style="height: 12rem" required>
                             </textarea>
                             <label for="message">Message</label>
-                            <div class="invalid-feedback"
-                                 data-sb-feedback="message:required">
-                                Un message est nécessaire.
-                            </div>
                         </div>
                         <br />
                         <!-- Submit success message-->
                         <!---->
                         <!-- This is what your users will see when the form-->
                         <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
+<!--                        <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
+                                <div class="fw-bolder">Form submission
+                                    successful!</div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Submit error message-->
                         <!---->
                         <!-- This is what your users will see when there is-->
                         <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
+<!--                        <div class="d-none" id="submitErrorMessage">
                             <div class="text-center text-danger mb-3">
                                 Une erreur est survenue
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Submit Button-->
                         <button class="btn btn-primary text-uppercase"
                                 id="submitButton" type="submit">Envoyer
