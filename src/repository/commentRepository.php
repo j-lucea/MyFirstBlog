@@ -50,7 +50,7 @@ class CommentRepository
         return $comment;
     }
 
-    public function createComment(string $post, string $author, string $comment): bool
+    public function createComment(string $post, int $author, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO p5_comment(post_id, user_id, content, created_at) 
