@@ -3,7 +3,7 @@
 namespace Application\Controllers\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\Exception\Exception;
 
 require 'src/phpmailer/src/Exception.php';
 require 'src/phpmailer/src/PHPMailer.php';
@@ -39,10 +39,9 @@ class Contact
             if (!$mail->send()) {
                 echo $mail->ErrorInfo;
             } else {
-                header('Location: index.php');
+                echo "Message bien envoyé";
             }
-        } else {
-            require('templates/contact.php');
         }
+        require('templates/contact.php');
     }
 }

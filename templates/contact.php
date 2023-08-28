@@ -1,15 +1,5 @@
 <?php $title = "Contact"; ?>
 
-<?php
-use Application\PHPMailer\PHPMailer\PHPMailer;
-use Application\PHPMailer\PHPMailer\Exception;
-
-require 'src/phpmailer/src/Exception.php';
-require 'src/phpmailer/src/PHPMailer.php';
-require 'src/phpmailer/src/SMTP.php';
-
-?>
-
 <?php ob_start(); ?>
 <!-- Page Header-->
 <header class="masthead" style="background-image:
@@ -36,34 +26,28 @@ require 'src/phpmailer/src/SMTP.php';
                 </p>
                 <div class="my-5">
                     <!-- Contact Form -->
-                    <form id="contactForm" action="index.php?action=contact">
+                    <form id="contactForm" method="post" action="index.php?action=contact">
                         <div class="form-floating">
                             <input class="form-control" id="name"
                                    name="name" type="text"
-                                   placeholder="Entrez votre nom..."
                                    required />
                             <label for="name">Nom</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="email"
                                    name="email" type="email"
-                                   placeholder="Entrez votre adresse mail..."
                                   required />
                             <label for="email">Adresse mail</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="subject"
                                    name="subject" type="text"
-                                   placeholder="Entrez le sujet de votre
-                                   message ..."
                                    required />
                             <label for="subject">Sujet</label>
                         </div>
                         <div class="form-floating">
                             <textarea class="form-control" id="message"
                                       name="message"
-                                      placeholder="Entrez votre
-                                      message ici..."
                                       style="height: 12rem" required>
                             </textarea>
                             <label for="message">Message</label>
