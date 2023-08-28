@@ -34,7 +34,7 @@
                             ?>
                             <p><strong><?= htmlspecialchars($comment->author) ?></strong>
                                 le <?= $comment->frenchCreationDate ?>
-                                <?php if($comment->author == $_SESSION['firstName']) { ?>(<a
+                                <?php if($_SESSION && $comment->author == $_SESSION['firstName']) { ?>(<a
                                         href="index.php?action=updateComment&id=<?=
                                         $comment->id ?>">modifier</a>)
                                 <?php } ?>
@@ -44,7 +44,7 @@
                         }
                     }
                 ?>
-                <?php if($_SESSION["login"]) { ?>
+                <?php if($_SESSION) { ?>
                 <div class="my-5">
                     <form action="index.php?action=addComment&id=<?= $post->id ?>"
                           method="post">
@@ -63,7 +63,7 @@
                     </form>
                 </div>
                 <?php } else { ?>
-                <p>Veuillez vous connecter pour commenter nos articles</p>
+                    <p>Veuillez vous <a href="index.php?action=login">connecter</a> pour commenter nos articles</p>
                 <?php } ?>
             </div>
         </div>
