@@ -33,33 +33,23 @@
                         foreach ($comments as $comment) {
                             ?>
                             <p><strong><?= htmlspecialchars($comment->author) ?></strong>
-                                le <?= $comment->frenchCreationDate ?> (<a
+                                le <?= $comment->frenchCreationDate ?>
+                                <?php if($comment->author == $_SESSION['firstName']) { ?>(<a
                                         href="index.php?action=updateComment&id=<?=
-                                        $comment->identifier ?>">modifier</a>)</p>
+                                        $comment->id ?>">modifier</a>)
+                                <?php } ?>
+                            </p>
                             <p><?= nl2br(htmlspecialchars($comment->content)) ?></p>
                             <?php
                         }
                     }
                 ?>
-<!--                <form action="index.php?action=addComment&id=<?php /*= $post->id */?>" method="post">
-                    <div>
-                        <label for="author">Auteur</label><br />
-                        <input type="text" id="author" name="author" />
-                    </div>
-                    <div>
-                        <label for="comment">Commentaire</label><br />
-                        <textarea id="comment" name="comment"></textarea>
-                    </div>
-                    <div>
-                        <input type="submit" />
-                    </div>
-                </form>-->
+                <?php if($_SESSION["login"]) { ?>
                 <div class="my-5">
                     <form action="index.php?action=addComment&id=<?= $post->id ?>"
                           method="post">
                         <div class="form-floating">
-                            <textarea class="form-control" id="comment"
-                                      placeholder="Saisissez votre commentaire ici..."
+                            <textarea class="form-control" id="comment" name="comment"
                                       style="height: 12rem" data-sb-validations="required"></textarea>
                             <label for="comment">Qu'en pensez-vous ?</label>
                             <div class="invalid-feedback"
@@ -67,30 +57,14 @@
                                 Veuillez saisir un commentaire.</div>
                         </div>
                         <br />
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessComment">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="https://startbootstrap.com/solution/contact-forms">
-                                    https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center
-                        text-danger mb-3">Une erreur est survenue !</div></div>
                         <!-- Submit Button-->
                         <button class="btn btn-primary text-uppercase" id="submitButton"
                                 type="submit">Envoyer</button>
                     </form>
                 </div>
+                <?php } else { ?>
+                <p>Veuillez vous connecter pour commenter nos articles</p>
+                <?php } ?>
             </div>
         </div>
     </div>

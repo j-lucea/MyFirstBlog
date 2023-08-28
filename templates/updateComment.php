@@ -1,4 +1,4 @@
-<?php $title = "Le blog de l'AVBN"; ?>
+<?php $title = "Modification du commentaire"; ?>
 
 <?php ob_start(); ?>
 <h1>Le super blog de l'AVBN !</h1>

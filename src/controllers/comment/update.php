@@ -10,7 +10,7 @@ use Application\Model\Comment\CommentRepository;
 
 class UpdateComment
 {
-    public function execute(string $identifier, ?array $input)
+    public function execute(string $id, ?array $input)
     {
         // It handles the form submission when there is an input.
         if ($input !== null) {
@@ -25,21 +25,21 @@ class UpdateComment
 
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $success = $commentRepository->updateComment($identifier, $author, $content);
+            $success = $commentRepository->updateComment($id, $author, $content);
             if (!$success) {
                 throw new \Exception('Impossible de modifier le commentaire !');
             } else {
                 header('Location: 
-                index.php?action=updateComment&id=' . $identifier);
+                index.php?action=updateComment&id=' . $id);
             }
         }
 
         // Otherwise, it displays the form.
         $commentRepository = new CommentRepository();
         $commentRepository->connection = new DatabaseConnection();
-        $comment = $commentRepository->getComment($identifier);
+        $comment = $commentRepository->getComment($id);
         if ($comment === null) {
-            throw new \Exception("Le commentaire $identifier n'existe pas.");
+            throw new \Exception("Le commentaire $id n'existe pas.");
         }
 
         require('templates/updateComment.php');
