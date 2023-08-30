@@ -5,18 +5,28 @@ session_start();
 require_once('src/controllers/comment/add.php');
 require_once('src/controllers/comment/update.php');
 require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
-require_once('src/controllers/postsList.php');
+require_once('src/controllers/post/view.php');
+require_once('src/controllers/post/add.php');
+require_once('src/controllers/post/edit.php');
+require_once('src/controllers/post/delete.php');
+require_once('src/controllers/post/list.php');
+require_once('src/controllers/post/admin.php');
 require_once('src/controllers/contact.php');
-require_once('src/controllers/login.php');
+require_once('src/controllers/user/login.php');
+require_once('src/controllers/user/admin.php');
 
 use Application\Controllers\Comment\Add\AddComment;
 use Application\Controllers\Comment\Update\UpdateComment;
 use Application\Controllers\Homepage\Homepage;
-use Application\Controllers\Post\Post;
-use Application\Controllers\PostsList\PostsList;
+use Application\Controllers\Post\View\ViewPost;
+use Application\Controllers\Post\Add\AddPost;
+use Application\Controllers\Post\Edit\EditPost;
+use Application\Controllers\Post\Delete\DeletePost;
+use Application\Controllers\Post\List\PostList;
+use Application\Controllers\Post\Admin\PostAdmin;
 use Application\Controllers\Contact\Contact;
-use Application\Controllers\Login\Login;
+use Application\Controllers\User\Login;
+use Application\Controllers\User\UserAdmin;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -25,13 +35,13 @@ try {
         } elseif ($_GET['action'] === 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
-
-                (new Post())->execute($identifier);
+                (new ViewPost())->execute($identifier);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         } elseif ($_GET['action'] === 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($_SESSION['id']) && !empty($_POST['comment'])) {
+            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($_SESSION['id'])
+                && !empty($_POST['comment'])) {
                 $identifier = $_GET['id'];
                 $author = $_SESSION['id'];
                 $comment = $_POST['comment'];
@@ -48,13 +58,22 @@ try {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;
                 }
-
                 (new UpdateComment())->execute($identifier, $input);
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        } elseif ($_GET['action'] === 'postsList') {
-            (new PostsList())->execute();
+        } elseif ($_GET['action'] === 'postList') {
+            (new PostList())->execute();
+        } elseif ($_GET['action'] === 'postAdmin') {
+            (new PostAdmin())->execute();
+        } elseif ($_GET['action'] === 'addPost') {
+            (new AddPost())->execute();
+        } elseif ($_GET['action'] === 'editPost') {
+            (new EditPost())->execute();
+        } elseif ($_GET['action'] === 'deletePost') {
+            (new DeletePost())->execute();
+        } elseif ($_GET['action'] === 'userAdmin') {
+            (new UserAdmin())->execute();
         } elseif ($_GET['action'] === 'contact') {
             (new Contact())->execute();
         } else {

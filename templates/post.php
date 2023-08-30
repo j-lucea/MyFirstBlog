@@ -44,7 +44,7 @@
                         }
                     }
                 ?>
-                <?php if($_SESSION["login"]) { ?>
+                <?php if($_SESSION) { ?>
                 <div class="my-5">
                     <form action="index.php?action=addComment&id=<?= $post->id ?>"
                           method="post">
@@ -64,6 +64,9 @@
                 </div>
                 <?php } else { ?>
                 <p>Veuillez vous connecter pour commenter nos articles</p>
+                    <!-- Connexion link -->
+                    <a class="btn btn-primary text-uppercase" href="index.php?action=login">
+                        Se connecter</a>
                 <?php } ?>
             </div>
         </div>

@@ -23,7 +23,11 @@ class Login
                     $user && $user->password === $_POST['password']
                 ) {
                     $this->openSession($user);
-                    header('Location: index.php');
+                    if ($_SESSION['role']==1) {
+                        header('Location: index.php?action=postAdmin');
+                    } else {
+                        header('Location: index.php');
+                    }
                 } else {
                     $errorMessage = sprintf('Les informations envoyées
                     ne permettent pas de vous identifier');

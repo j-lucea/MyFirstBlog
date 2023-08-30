@@ -48,8 +48,9 @@ foreach ($posts as $post) {
     ?>
             <!-- Pager-->
             <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary text-uppercase" href="index.php?action=postsList">
-                    Plus d'articles</a>
+                <a class="btn btn-primary text-uppercase"
+                   href="index.php?action=postList">Plus d'articles
+                </a>
             </div>
         </div>
     </div>

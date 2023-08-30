@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Controllers\Post;
+namespace Application\Controllers\Post\View;
 
 require_once('src/lib/database.php');
 require_once('src/model/comment.php');
@@ -12,7 +12,7 @@ use Application\Lib\Database\DatabaseConnection;
 use Application\Repository\CommentRepository\CommentRepository;
 use Application\Repository\PostRepository\PostRepository;
 
-class Post
+class ViewPost
 {
     public function execute(string $identifier)
     {

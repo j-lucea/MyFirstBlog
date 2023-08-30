@@ -22,8 +22,8 @@ class User
         ) {
             $loggedUser = $user;
         } else {
-            $errorMessage = sprintf('Les informations envoyées ne permettent pas de 
-                                            vous identifier : (%s/%s)');
+            $errorMessage = sprintf('Les informations envoyées ne permettent pas 
+            de vous identifier : (%s/%s)');
         }
         require('templates/login.php');
     }

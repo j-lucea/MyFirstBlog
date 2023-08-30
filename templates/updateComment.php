@@ -1,26 +1,56 @@
 <?php $title = "Modification du commentaire"; ?>
 
 <?php ob_start(); ?>
-<h1>Le super blog de l'AVBN !</h1>
-<p><a href="index.php?action=post&id=<?= $comment->post ?>">Retour au billet</a></p>
-
-<h2>Modification du commentaire</h2>
-
-<form action="index.php?action=updateComment&id=<?= $comment->identifier ?>" method="post">
-   <div>
-      <label for="author">Auteur</label><br />
-      <input type="text" id="author" name="author" value="
-      <?= htmlspecialchars($comment->author) ?>"/>
-   </div>
-   <div>
-      <label for="comment">Commentaire</label><br />
-      <textarea id="comment" name="comment"><?= htmlspecialchars($comment->comment) ?>
-      </textarea>
-   </div>
-   <div>
-      <input type="submit" />
-   </div>
-</form>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('src/public/assets/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>My First Blog</h1>
+                    <span class="subheading">Découvrez ce qui me passionne</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Modification du commentaire
+                </p>
+                <div class="my-5">
+                    <!-- Contact Form -->
+                    <form method="post"
+                          action="index.php?action=updateComment&id=
+                          <?= $comment->id ?>">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="content"
+                                      name="content"
+                                      style="height: 12rem" required>
+                                <?= htmlspecialchars($comment->content) ?>
+                            </textarea>
+                            <label for="message">Contenu</label>
+                        </div>
+                        <br />
+                        <input type="hidden" id="postId" name="postId"
+                               value="<?= $comment->post ?>" />
+                        <!-- Return link -->
+                        <a class="btn btn-primary text-uppercase"
+                           href="index.php?action=post&id=<?= $comment->post ?>">
+                            Retour</a>
+                        <!-- Submit Button-->
+                        <button class="btn btn-success text-uppercase"
+                                id="submitButton" type="submit">Modifier
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -63,7 +63,7 @@ class CommentRepository
     public function updateComment(string $id, string $author, string $content): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'UPDATE p5_comment SET author = ?, comment = ? WHERE id = ?'
+            'UPDATE p5_comment SET user_id = ?, content = ?, updated_at = NOW() WHERE id = ?'
         );
         $affectedLines = $statement->execute([$author, $content, $id]);
         return ($affectedLines > 0);
