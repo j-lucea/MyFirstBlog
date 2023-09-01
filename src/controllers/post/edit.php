@@ -17,11 +17,10 @@ class EditPost
         $postRepository = new PostRepository();
         $postRepository->connection = new DatabaseConnection();
         if (isset($_POST['title']) && isset($_POST['chapo']) && isset($_POST['content'])
-            && isset($_POST['image']) && isset($_POST['category'])
-            && isset($_SESSION['id'])) {
-            $posts = $postRepository->editPost($_GET['id'], $_POST['title'],
-                $_POST['chapo'], $_POST['content'], $_POST['image'],
-                $_POST['category'], $_SESSION['id']);
+            && isset($_POST['category']) && isset($_SESSION['id'])) {
+            $posts = $postRepository->editPost(htmlspecialchars($_GET['id']), htmlspecialchars($_POST['title']),
+                htmlspecialchars($_POST['chapo']), htmlspecialchars($_POST['content']), htmlspecialchars($_POST['image']),
+                htmlspecialchars($_POST['category']), htmlspecialchars($_SESSION['id']));
             header('Location: index.php?action=postAdmin');
         } else {
             /*$categoryRepository = new CategoryRepository();

@@ -25,18 +25,18 @@ class UpdateComment
 
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $success = $commentRepository->updateComment($id, $author, $content);
+            $success = $commentRepository->updateComment(htmlspecialchars($id), htmlspecialchars($author), htmlspecialchars($content));
             if (!$success) {
                 throw new \Exception('Impossible de modifier le commentaire !');
             } else {
-                header('Location: index.php?action=post&id='.$input['postId']);
+                header('Location: index.php?action=post&id='.htmlspecialchars($input['postId']));
             }
         } else {
 
             // Otherwise, it displays the form.
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $comment = $commentRepository->getComment($id);
+            $comment = $commentRepository->getComment(htmlspecialchars($id));
             if ($comment === null) {
                 throw new \Exception("Le commentaire $id n'existe pas.");
             }

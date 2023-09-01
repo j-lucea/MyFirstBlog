@@ -39,12 +39,12 @@
                                    maxlength="255" required/>
                             <label for="chapo">Description</label>
                         </div>
-                        <div class="form-floating">
+<!--                        <div class="form-floating">
                             <input class="form-control" id="image"
                                    name="image" type="file"
                                    maxlength="500"/>
                             <label for="image">Image</label>
-                        </div>
+                        </div>-->
                         <div class="form-floating">
                             <select class="form-select" name="category">
                                 <option value="1" selected>Choississez une catégorie
@@ -64,8 +64,7 @@
                         <div class="form-floating">
                             <textarea class="form-control" id="content"
                                       name="content"
-                                      value=<?= htmlspecialchars($post->content) ?>
-                                      style="height: 12rem" required>
+                                      style="height: 12rem" required><?= htmlspecialchars($post->content) ?>
                             </textarea>
                             <label for="message">Contenu</label>
                         </div>

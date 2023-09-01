@@ -34,17 +34,31 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=postList">Liste des articles</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=postAdmin">Gestion des articles</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=addPost">Ajouter un article</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=login">Se connecter</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=userAdmin">Gestion des utilisateurs</a></li>
+                                        href="index.php?action=postList">Articles</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=contact">Contact</a></li>
+                <?php if(!empty($_SESSION)) { ?>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                        href="index.php?action=logout">Déconnexion</a></li>
+                <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                            href="index.php?action=register">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                        href="index.php?action=login">Connexion</a></li>
+                <?php } ?>
+                <?php if(!empty($_SESSION) && $_SESSION['role'] == 1): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4"
+                           href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">Administration
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?action=postAdmin">Articles</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=commentAdmin">Commentaires</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=userAdmin">Utilisateurs</a></li>
+                        </ul>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

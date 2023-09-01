@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Controllers\Login;
+namespace Application\Controllers\User\Login;
 
 require_once('src/lib/database.php');
 require_once('src/model/user.php');
@@ -32,9 +32,10 @@ class Login
                     $errorMessage = sprintf('Les informations envoyées
                     ne permettent pas de vous identifier');
                 }
+        }   else {
+                require('templates/login.php');
         }
 
-        require('templates/login.php');
     }
     private function openSession($user): void
     {

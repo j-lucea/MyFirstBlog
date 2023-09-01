@@ -19,8 +19,8 @@ class AddPost
             && isset($_SESSION['id'])) {
             $postRepository = new PostRepository();
             $postRepository->connection = new DatabaseConnection();
-            $posts = $postRepository->createPost($_POST['title'], $_POST['chapo'],
-                $_POST['content'], $_POST['image'], $_POST['category'], $_SESSION['id']);
+            $postRepository->createPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['chapo']),
+                htmlspecialchars($_POST['content']), htmlspecialchars($_POST['image']), htmlspecialchars($_POST['category']), htmlspecialchars($_SESSION['id']));
             header('Location: index.php?action=postAdmin');
         } else {
             /*$categoryRepository = new CategoryRepository();

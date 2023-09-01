@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Controllers\User;
+namespace Application\Controllers\User\Admin;
 
 require_once('src/lib/database.php');
 require_once('src/model/user.php');

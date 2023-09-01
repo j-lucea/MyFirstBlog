@@ -15,12 +15,12 @@ class AddComment
         if (!empty($author) && !empty($comment)) {
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $success = $commentRepository->createComment($post, $author, $comment);
+            $success = $commentRepository->createComment(htmlspecialchars($post), htmlspecialchars($author), htmlspecialchars($comment));
             if (!$success) {
                 throw new \Exception('Impossible d\'ajouter 
                 le commentaire !');
             }
         }
-        header('Location: index.php?action=post&id=' . $post);
+        header('Location: index.php?action=post&id=' . htmlspecialchars($post));
     }
 }

@@ -47,32 +47,21 @@ class UserRepository
         return $user;
     }
     public function createUser(string $last_name, string $first_name, string $login,
-                               string $password, string $mail, bool $role, string $avatar): bool
+                               string $password, string $mail, string $avatar): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO p5_user(last_name, first_name, login, password, mail, 
-                    role, created_at) 
-                    VALUES(?, ?, ?, ?, ?, ?, NOW())'
+                    role, avatar, created_at, updated_at) 
+                    VALUES(?, ?, ?, ?, ?, 0, ?, NOW(), NOW())'
         );
-        $affectedLines = $statement->execute([$title, $chapo, $content, $image,
-            $categoryId, $userId]);
+        $affectedLines = $statement->execute([$last_name, $first_name, $login, $password,
+            $mail, $avatar]);
         return ($affectedLines > 0);
     }
-    public function editPost(string $id, string $title, string $chapo, string $content,
-                             string $image, int $category, int $userId): bool
+    public function deleteUser(string $id): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'UPDATE p5_post SET title = ?, chapo = ?, content = ?, 
-                   category_id = ?, updated_at = NOW() WHERE id = ?'
-        );
-        $affectedLines = $statement->execute([$title, $chapo, $content,
-            $category, $id]);
-        return ($affectedLines > 0);
-    }
-    public function deletePost(string $id): bool
-    {
-        $statement = $this->connection->getConnection()->prepare(
-            'DELETE FROM p5_post WHERE id = ?'
+            'DELETE FROM p5_user WHERE id = ?'
         );
         $affectedLines = $statement->execute([$id]);
         return ($affectedLines > 0);

@@ -1,4 +1,4 @@
-<?php $title = "Administration des utilisateurs"; ?>
+<?php $title = "Administration des commentaires"; ?>
 
 <?php ob_start(); ?>
 <!-- Page Header-->
@@ -25,8 +25,11 @@
 
                 </div>
             <?php endif; ?>
-                <?php
-                    foreach ($users as $user) {
+            <!-- Divider-->
+            <hr class="my-4" />
+
+            <?php
+            foreach ($comments as $comment) {
                 ?>
                 <!-- Posts preview-->
                 <!--Card-->
@@ -34,21 +37,23 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($user->firstName); ?>
-                                    <?= htmlspecialchars($user->lastName); ?></h5>
-                                        <p class="card-text">Identifiant : <em><?= $user->login; ?><br>
-                                        Adresse mail : <em><?= $user->mail; ?><br>
-                                        Rôle : <em><?php if($user->role) { ?>Administrateur
-                                                        <?php } else { ?>Utilisateur<?php } ?><br>
-                                        Date de création :  le <?= $user->frenchCreationDate; ?>
+                                <h5 class="card-title"><?= htmlspecialchars($comment->author); ?></h5>
+                                <p class="card-text"><?= htmlspecialchars($comment->content); ?></p>
+                                <p class="card-text">Publié par <em><?= $comment->author; ?><br>
                                         <?php
-                                        if ($user->frenchCreationDate != $user->frenchUpdateDate)
+                                        if ($comment->frenchCreationDate == $comment->frenchUpdateDate)
                                         { ?>
-                                            Dernière modification :  le <?= $user->frenchUpdateDate; ?>
+                                            le <?= $comment->frenchCreationDate; ?>
+                                        <?php } else { ?>
+                                            Modifié le <?= $comment->frenchUpdateDate; ?>
                                         <?php } ?>
                                 </p>
-                                <a href="index.php?action=deleteUser&id=<?= urlencode($user->id) ?>"
-                                   class="btn btn-danger" onclick="return confirm('Voulez-vous supprimer définitivement ce compte ?')">Supprimer</a>
+                                <?php if(empty($comment->status)): ?>
+                                    <a href="index.php?action=activateComment&id=<?= urlencode($comment->id) ?>"
+                                        class="btn btn-success">Valider</a>
+                                <?php endif; ?>
+                                <a href="index.php?action=deleteComment&id=<?= urlencode($comment->id) ?>"
+                                   class="btn btn-danger" onclick="return confirm('Voulez-vous supprimer définitivement cet article ?')">Supprimer</a>
                             </div>
                         </div>
                     </div>

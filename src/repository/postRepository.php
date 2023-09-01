@@ -67,8 +67,8 @@ class PostRepository
     {
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO p5_post(title, chapo, content, image, category_id, 
-                    user_id, created_at) 
-                    VALUES(?, ?, ?, ?, ?, ?, NOW())'
+                    user_id, created_at, updated_at) 
+                    VALUES(?, ?, ?, ?, ?, ?, NOW(), NOW())'
         );
         $affectedLines = $statement->execute([$title, $chapo, $content, $image,
             $categoryId, $userId]);

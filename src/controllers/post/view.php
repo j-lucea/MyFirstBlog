@@ -20,11 +20,11 @@ class ViewPost
 
         $postRepository = new PostRepository();
         $postRepository->connection = $connection;
-        $post = $postRepository->getPost($identifier);
+        $post = $postRepository->getPost(htmlspecialchars($identifier));
 
         $commentRepository = new CommentRepository();
         $commentRepository->connection = $connection;
-        $comments = $commentRepository->getComments($identifier);
+        $comments = $commentRepository->getActivatedComments(htmlspecialchars($identifier));
 
         require('templates/post.php');
     }

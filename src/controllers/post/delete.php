@@ -15,7 +15,7 @@ class DeletePost
         if (isset($_SESSION['id']) && $_GET['id'] > 0) {
             $postRepository = new PostRepository();
             $postRepository->connection = new DatabaseConnection();
-            $posts = $postRepository->deletePost($_GET['id']);
+            $posts = $postRepository->deletePost(htmlspecialchars($_GET['id']));
         }
         header('Location: index.php?action=postAdmin');
     }
