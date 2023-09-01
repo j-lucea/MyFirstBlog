@@ -8,20 +8,12 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading">Découvrez ce qui me passionne</span>
+                    <span class="subheading"><?php echo $title ?></span>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
-    <!-- If the user is correctly logged, we show a success message -->
-<?php if(isset($_SESSION)): ?>
-    <div class="alert alert-success" role="alert">
-        Bonjour <?php echo $_SESSION['firstName']; ?> et bienvenue sur le site !
-
-    </div>
-<?php endif; ?>
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -48,8 +40,9 @@ foreach ($posts as $post) {
     ?>
             <!-- Pager-->
             <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary text-uppercase" href="index.php?action=postsList">
-                    Plus d'articles</a>
+                <a class="btn btn-primary text-uppercase"
+                   href="index.php?action=postList">Plus d'articles
+                </a>
             </div>
         </div>
     </div>

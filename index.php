@@ -3,35 +3,60 @@
 session_start();
 
 require_once('src/controllers/comment/add.php');
+require_once('src/controllers/comment/activate.php');
 require_once('src/controllers/comment/update.php');
+require_once('src/controllers/comment/admin.php');
+require_once('src/controllers/comment/delete.php');
 require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
-require_once('src/controllers/postsList.php');
+require_once('src/controllers/post/view.php');
+require_once('src/controllers/post/add.php');
+require_once('src/controllers/post/edit.php');
+require_once('src/controllers/post/delete.php');
+require_once('src/controllers/post/list.php');
+require_once('src/controllers/post/admin.php');
 require_once('src/controllers/contact.php');
-require_once('src/controllers/login.php');
+require_once('src/controllers/user/login.php');
+require_once('src/controllers/user/register.php');
+require_once('src/controllers/user/admin.php');
+require_once('src/controllers/user/delete.php');
 
 use Application\Controllers\Comment\Add\AddComment;
+use Application\Controllers\Comment\Activate\ActivateComment;
 use Application\Controllers\Comment\Update\UpdateComment;
+use Application\Controllers\Comment\Admin\CommentAdmin;
+use Application\Controllers\Comment\Delete\DeleteComment;
 use Application\Controllers\Homepage\Homepage;
-use Application\Controllers\Post\Post;
-use Application\Controllers\PostsList\PostsList;
+use Application\Controllers\Post\View\ViewPost;
+use Application\Controllers\Post\Add\AddPost;
+use Application\Controllers\Post\Edit\EditPost;
+use Application\Controllers\Post\Delete\DeletePost;
+use Application\Controllers\Post\List\PostList;
+use Application\Controllers\Post\Admin\PostAdmin;
 use Application\Controllers\Contact\Contact;
-use Application\Controllers\Login\Login;
+use Application\Controllers\User\Login\Login;
+use Application\Controllers\User\Register\Register;
+use Application\Controllers\User\Admin\UserAdmin;
+use Application\Controllers\User\Delete\DeleteUser;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
-        if ($_GET['action'] === 'login') {
+        if ($_GET['action'] === 'login' && empty($_SESSION)) {
             (new Login())->execute();
+        } elseif ($_GET['action'] === 'logout') {
+            session_destroy();
+            header('Location: index.php?action=login');
+        } elseif ($_GET['action'] === 'register') {
+            (new Register())->execute();
         } elseif ($_GET['action'] === 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
-
-                (new Post())->execute($identifier);
+                (new ViewPost())->execute($identifier);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         } elseif ($_GET['action'] === 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($_SESSION['id']) && !empty($_POST['comment'])) {
+            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($_SESSION['id'])
+                && !empty($_POST['comment'])) {
                 $identifier = $_GET['id'];
                 $author = $_SESSION['id'];
                 $comment = $_POST['comment'];
@@ -48,14 +73,31 @@ try {
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;
                 }
-
                 (new UpdateComment())->execute($identifier, $input);
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        } elseif ($_GET['action'] === 'postsList') {
-            (new PostsList())->execute();
-        } elseif ($_GET['action'] === 'contact') {
+        }   elseif ($_GET['action'] === 'deleteComment') {
+            (new DeleteComment())->execute();
+        }   elseif ($_GET['action'] === 'activateComment') {
+            (new ActivateComment())->execute();
+        }   elseif ($_GET['action'] === 'commentAdmin') {
+            (new CommentAdmin())->execute();
+        }   elseif ($_GET['action'] === 'postList') {
+            (new PostList())->execute();
+        } elseif ($_GET['action'] === 'postAdmin') {
+            (new PostAdmin())->execute();
+        } elseif ($_GET['action'] === 'addPost') {
+            (new AddPost())->execute();
+        } elseif ($_GET['action'] === 'editPost') {
+            (new EditPost())->execute();
+        } elseif ($_GET['action'] === 'deletePost') {
+            (new DeletePost())->execute();
+        } elseif ($_GET['action'] === 'userAdmin') {
+            (new UserAdmin())->execute();
+        } elseif ($_GET['action'] === 'deleteUser') {
+            (new DeleteUser())->execute();
+        }   elseif ($_GET['action'] === 'contact') {
             (new Contact())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");

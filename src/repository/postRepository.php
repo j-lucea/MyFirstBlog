@@ -62,4 +62,35 @@ class PostRepository
         }
         return $posts;
     }
+    public function createPost(string $title, string $chapo, string $content,
+                               string $image, int $categoryId, int $userId): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'INSERT INTO p5_post(title, chapo, content, image, category_id, 
+                    user_id, created_at, updated_at) 
+                    VALUES(?, ?, ?, ?, ?, ?, NOW(), NOW())'
+        );
+        $affectedLines = $statement->execute([$title, $chapo, $content, $image,
+            $categoryId, $userId]);
+        return ($affectedLines > 0);
+    }
+    public function editPost(string $id, string $title, string $chapo, string $content,
+                             string $image, int $category, int $userId): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'UPDATE p5_post SET title = ?, chapo = ?, content = ?, 
+                   category_id = ?, updated_at = NOW() WHERE id = ?'
+        );
+        $affectedLines = $statement->execute([$title, $chapo, $content,
+                              $category, $id]);
+        return ($affectedLines > 0);
+    }
+    public function deletePost(string $id): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'DELETE FROM p5_post WHERE id = ?'
+        );
+        $affectedLines = $statement->execute([$id]);
+        return ($affectedLines > 0);
+    }
 }

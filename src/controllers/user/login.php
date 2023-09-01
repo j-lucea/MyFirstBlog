@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Controllers\Login;
+namespace Application\Controllers\User\Login;
 
 require_once('src/lib/database.php');
 require_once('src/model/user.php');
@@ -23,14 +23,19 @@ class Login
                     $user && $user->password === $_POST['password']
                 ) {
                     $this->openSession($user);
-                    header('Location: index.php');
+                    if ($_SESSION['role']==1) {
+                        header('Location: index.php?action=postAdmin');
+                    } else {
+                        header('Location: index.php');
+                    }
                 } else {
                     $errorMessage = sprintf('Les informations envoyées
                     ne permettent pas de vous identifier');
                 }
+        }   else {
+                require('templates/login.php');
         }
 
-        require('templates/login.php');
     }
     private function openSession($user): void
     {

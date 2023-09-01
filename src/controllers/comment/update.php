@@ -6,7 +6,7 @@ require_once('src/lib/database.php');
 require_once('src/model/comment.php');
 
 use Application\Lib\Database\DatabaseConnection;
-use Application\Model\Comment\CommentRepository;
+use Application\Repository\CommentRepository\CommentRepository;
 
 class UpdateComment
 {
@@ -16,32 +16,32 @@ class UpdateComment
         if ($input !== null) {
             $author = null;
             $content = null;
-            if (!empty($input['author']) && !empty($input['comment'])) {
-                $author = $input['author'];
-                $content = $input['comment'];
+            if (!empty($input['content']) && !empty($_SESSION['id'])) {
+                $author = $_SESSION['id'];
+                $content = $input['content'];
             } else {
                 throw new \Exception('Les données du formulaire sont invalides.');
             }
 
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $success = $commentRepository->updateComment($id, $author, $content);
+            $success = $commentRepository->updateComment(htmlspecialchars($id), htmlspecialchars($author), htmlspecialchars($content));
             if (!$success) {
                 throw new \Exception('Impossible de modifier le commentaire !');
             } else {
-                header('Location: 
-                index.php?action=updateComment&id=' . $id);
+                header('Location: index.php?action=post&id='.htmlspecialchars($input['postId']));
             }
-        }
+        } else {
 
-        // Otherwise, it displays the form.
-        $commentRepository = new CommentRepository();
-        $commentRepository->connection = new DatabaseConnection();
-        $comment = $commentRepository->getComment($id);
-        if ($comment === null) {
-            throw new \Exception("Le commentaire $id n'existe pas.");
-        }
+            // Otherwise, it displays the form.
+            $commentRepository = new CommentRepository();
+            $commentRepository->connection = new DatabaseConnection();
+            $comment = $commentRepository->getComment(htmlspecialchars($id));
+            if ($comment === null) {
+                throw new \Exception("Le commentaire $id n'existe pas.");
+            }
 
-        require('templates/updateComment.php');
+            require('templates/updateComment.php');
+        }
     }
 }

@@ -34,11 +34,42 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=postsList">Articles</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="index.php?action=login">Se connecter</a></li>
+                                        href="index.php?action=postList">Articles</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=contact">Contact</a></li>
+                <?php if(!empty($_SESSION)) { ?>
+                <!--<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                        href="index.php?action=logout">Déconnexion</a></li>-->
+                    <?php if($_SESSION['role'] == 1): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4"
+                               href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">Administration
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?action=postAdmin">Articles</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=commentAdmin">Commentaires</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=userAdmin">Utilisateurs</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+                    <!-- If the user is correctly logged, we show a success message -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4"
+                           href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false"><?= $_SESSION['firstName'] ?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?action=logout">Déconnexion</a></li>
+                        </ul>
+                    </li>
+
+                <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                            href="index.php?action=register">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                        href="index.php?action=login">Connexion</a></li>
+                <?php } ?>
             </ul>
         </div>
     </div>
