@@ -1,4 +1,4 @@
-<?php $title = "Liste des articles"; ?>
+<?php $title = "Articles"; ?>
 
 <?php ob_start(); ?>
 <!-- Page Header-->
@@ -7,8 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>My First Blog</h1>
-                    <span class="subheading"><?php echo $title ?></span>
+                    <h1><?php echo $title ?></h1>
                 </div>
             </div>
         </div>
@@ -31,7 +30,7 @@
                     </a>
                     <p class="post-meta">
                         Publié par
-                        <a href="#!"><em><?= $post->author; ?></em></a>
+                        <em><?= $post->author; ?></em>
                         <em>le <?= $post->frenchCreationDate; ?></em>
                     </p>
                 </div>

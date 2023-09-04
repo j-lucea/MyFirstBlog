@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Contactez-moi</h1>
+                    <h1><?php echo $title ?></h1>
                     <span class="subheading">Des questions ?
                         J'ai les réponses.</span>
                 </div>
@@ -53,25 +53,6 @@
                             <label for="message">Message</label>
                         </div>
                         <br />
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-<!--                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission
-                                    successful!</div>
-                            </div>
-                        </div>-->
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-<!--                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">
-                                Une erreur est survenue
-                            </div>
-                        </div>-->
                         <!-- Submit Button-->
                         <button class="btn btn-primary text-uppercase"
                                 id="submitButton" type="submit">Envoyer

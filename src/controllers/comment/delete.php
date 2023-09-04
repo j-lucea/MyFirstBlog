@@ -10,7 +10,7 @@ use Application\Repository\CommentRepository\CommentRepository;
 
 class DeleteComment
 {
-    public function execute()
+    public function execute(): void
     {
         if (!empty($_SESSION['id']) && $_GET['id'] > 0) {
             $commentRepository = new CommentRepository();

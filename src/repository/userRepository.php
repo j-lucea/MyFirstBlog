@@ -41,10 +41,9 @@ class UserRepository
         if ($row === false) {
             return null;
         }
-        $user = new User($row['id'], $row['last_name'], $row['first_name'], $row['login'],
+        return new User($row['id'], $row['last_name'], $row['first_name'], $row['login'],
             $row['password'], $row['mail'], $row['role'], $row['avatar'],
             $row['french_creation_date'], $row['french_update_date']);
-        return $user;
     }
     public function createUser(string $last_name, string $first_name, string $login,
                                string $password, string $mail, string $avatar): bool

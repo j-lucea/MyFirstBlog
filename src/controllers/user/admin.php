@@ -11,7 +11,7 @@ use Application\Repository\UserRepository\UserRepository;
 
 class UserAdmin
 {
-    public function execute()
+    public function execute(): void
     {
         $connection = new DatabaseConnection();
         $userRepository = new UserRepository();

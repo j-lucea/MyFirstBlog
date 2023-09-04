@@ -64,10 +64,9 @@ class CommentRepository
         if ($row === false) {
             return null;
         }
-        $comment = new Comment($row['id'], $row['content'], $row['status'],
+        return new Comment($row['id'], $row['content'], $row['status'],
             $row['french_creation_date'], $row['french_update_date'],
             $row['author'], $row['post_id']);
-        return $comment;
     }
 
     public function createComment(int $post, int $author, string $comment): bool

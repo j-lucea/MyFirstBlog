@@ -20,10 +20,9 @@ class PostRepository
         );
         $statement->execute([$id]);
         $row = $statement->fetch();
-        $post = new Post($row['id'],$row['title'], $row['chapo'], $row['content'],
+        return new Post($row['id'],$row['title'], $row['chapo'], $row['content'],
                 $row['image'], $row['french_creation_date'], $row['french_update_date'],
                 $row['category_id'], $row['author']);
-        return $post;
     }
 
     public function getPosts(): array

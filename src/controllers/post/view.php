@@ -14,7 +14,7 @@ use Application\Repository\PostRepository\PostRepository;
 
 class ViewPost
 {
-    public function execute(string $identifier)
+    public function execute(string $identifier): void
     {
         $connection = new DatabaseConnection();
 

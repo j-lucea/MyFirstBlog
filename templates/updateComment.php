@@ -32,7 +32,7 @@
                                       style="height: 12rem" required>
                                 <?= htmlspecialchars($comment->content) ?>
                             </textarea>
-                            <label for="message">Contenu</label>
+                            <label for="content">Contenu</label>
                         </div>
                         <br />
                         <input type="hidden" id="postId" name="postId"

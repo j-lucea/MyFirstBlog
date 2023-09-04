@@ -3,15 +3,18 @@
 namespace Application\Controllers\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception\Exception;
+use PHPMailer\PHPMailer\Exception;
 
-require 'src/phpmailer/src/Exception.php';
-require 'src/phpmailer/src/PHPMailer.php';
-require 'src/phpmailer/src/SMTP.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 
 class Contact
 {
-    public function execute()
+    /**
+     * @throws Exception
+     */
+    public function execute(): void
     {
         if (isset($_POST['name']) && isset($_POST['email'])
             && isset($_POST['subject']) && isset($_POST['message'])) {
@@ -21,11 +24,10 @@ class Contact
             $mail->Port = 465;
             $mail->SMTPAuth = 1;
 
-            if($mail->SMTPAuth){
-                $mail->SMTPSecure = 'ssl';
-                $mail->Username   =  'contact@jlucea.com';
-                $mail->Password   =  'Nathan2018';
-            }
+            $mail->SMTPSecure = 'ssl';
+            $mail->Username   =  'contact@jlucea.com';
+            $mail->Password   =  'Nathan2018';
+
             $mail->CharSet = 'UTF-8';
             $mail->smtpConnect();
             $mail->From       = htmlspecialchars($_POST['email']);

@@ -10,7 +10,7 @@ use Application\Repository\UserRepository\UserRepository;
 
 class DeleteUser
 {
-    public function execute()
+    public function execute(): void
     {
         if (isset($_SESSION['id']) && $_GET['id'] > 0) {
             $userRepository = new UserRepository();
