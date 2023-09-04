@@ -10,14 +10,14 @@ use Application\Repository\UserRepository\UserRepository;
 
 class Register
 {
-    public function execute()
+    public function execute(): void
     {
         if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['login'])
             && isset($_POST['password']) && isset($_POST['mail'])) {
             $connection = new DatabaseConnection();
             $userRepository = new UserRepository();
             $userRepository->connection = $connection;
-            $user = $userRepository->createUser(htmlspecialchars($_POST['lastName']), htmlspecialchars($_POST['firstName']), htmlspecialchars($_POST['login']),
+            $userRepository->createUser(htmlspecialchars($_POST['lastName']), htmlspecialchars($_POST['firstName']), htmlspecialchars($_POST['login']),
                 htmlspecialchars($_POST['password']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['avatar']));
             header('Location: index.php');
         } else {

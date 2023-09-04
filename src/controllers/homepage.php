@@ -10,7 +10,7 @@ use Application\Repository\PostRepository\PostRepository;
 
 class Homepage
 {
-    public function execute()
+    public function execute(): void
     {
         $postRepository = new PostRepository();
         $postRepository->connection = new DatabaseConnection();

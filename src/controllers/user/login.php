@@ -12,7 +12,7 @@ use Application\Repository\UserRepository\UserRepository;
 
 class Login
 {
-    public function execute()
+    public function execute(): void
     {
         if (isset($_POST['login']) && isset($_POST['password'])) {
                 $connection = new DatabaseConnection();
@@ -29,8 +29,8 @@ class Login
                         header('Location: index.php');
                     }
                 } else {
-                    $errorMessage = sprintf('Les informations envoyées
-                    ne permettent pas de vous identifier');
+                    $errorMessage = 'Les informations envoyées
+                    ne permettent pas de vous identifier';
                 }
         }   else {
                 require('templates/login.php');

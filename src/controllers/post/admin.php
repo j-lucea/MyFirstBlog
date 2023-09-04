@@ -11,7 +11,7 @@ use Application\Repository\PostRepository\PostRepository;
 
 class PostAdmin
 {
-    public function execute()
+    public function execute(): void
     {
         $postRepository = new PostRepository();
         $postRepository->connection = new DatabaseConnection();

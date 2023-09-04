@@ -11,7 +11,7 @@ use Application\Repository\CommentRepository\CommentRepository;
 
 class CommentAdmin
 {
-    public function execute()
+    public function execute(): void
     {
         $connection = new DatabaseConnection();
         $commentRepository = new CommentRepository();

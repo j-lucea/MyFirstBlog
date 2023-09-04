@@ -7,17 +7,22 @@ require_once('src/model/comment.php');
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Repository\CommentRepository\CommentRepository;
+use Exception;
 
 class AddComment
 {
-    public function execute(string $post, int $author, string $comment)
+    /**
+     * @throws Exception
+     */
+    public function execute(string $post, int $author, string $comment): void
     {
         if (!empty($author) && !empty($comment)) {
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $success = $commentRepository->createComment(htmlspecialchars($post), htmlspecialchars($author), htmlspecialchars($comment));
+            $success = $commentRepository->createComment(htmlspecialchars($post),
+                htmlspecialchars($author), htmlspecialchars($comment));
             if (!$success) {
-                throw new \Exception('Impossible d\'ajouter 
+                throw new Exception('Impossible d\'ajouter 
                 le commentaire !');
             }
         }

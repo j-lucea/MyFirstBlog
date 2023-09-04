@@ -2,13 +2,12 @@
 
 <?php ob_start(); ?>
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('src/public/assets/img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('src/public/assets/img/post-sample-image.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>My First Blog</h1>
-                    <span class="subheading"><?php echo $title ?></span>
+                    <h1><?php echo $title ?></h1>
                 </div>
             </div>
         </div>
@@ -19,8 +18,6 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>Inscrivez-vous
-                </p>
                 <div class="my-5">
                     <!-- Subscription Form -->
                     <form id="addForm" method="post"
@@ -35,7 +32,7 @@
                             <input class="form-control" id="firstName"
                                    name="firstName" type="text"
                                    maxlength="50" required/>
-                            <label for="name">Prénom</label>
+                            <label for="firstName">Prénom</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="login"
@@ -53,7 +50,7 @@
                             <input class="form-control" id="mail"
                                    name="mail" type="email"
                                    maxlength="50" required/>
-                            <label for="lastName">Adresse mail</label>
+                            <label for="mail">Adresse mail</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="avatar"
