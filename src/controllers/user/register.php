@@ -17,8 +17,10 @@ class Register
             $connection = new DatabaseConnection();
             $userRepository = new UserRepository();
             $userRepository->connection = $connection;
+            $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
             $userRepository->createUser(htmlspecialchars($_POST['lastName']), htmlspecialchars($_POST['firstName']), htmlspecialchars($_POST['login']),
-                htmlspecialchars($_POST['password']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['avatar']));
+                htmlspecialchars($hash), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['avatar']));
             header('Location: index.php');
         } else {
             require('templates/register.php');
