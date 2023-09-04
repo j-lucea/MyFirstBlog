@@ -19,23 +19,27 @@ class Login
                 $userRepository = new UserRepository();
                 $userRepository->connection = $connection;
                 $user = $userRepository->getUser(htmlspecialchars($_POST['login']));
-                if (
-                    $user && $user->password === $_POST['password']
-                ) {
-                    $this->openSession($user);
-                    if ($_SESSION['role']==1) {
-                        header('Location: index.php?action=postAdmin');
+                if ($user) {
+                    $verify = password_verify($_POST['password'], $user->password);
+                    if ($verify) {
+                        $this->openSession($user);
+                        if ($_SESSION['role']==1) {
+                            require('templates/login.php');
+                        } else {
+                            require('templates/login.php');
+                        }
                     } else {
-                        header('Location: index.php');
+                        $errorMessage = 'Mot de passe incorrect';
+                        require('templates/login.php');
                     }
                 } else {
                     $errorMessage = 'Les informations envoyées
                     ne permettent pas de vous identifier';
+                    require('templates/login.php');
                 }
         }   else {
                 require('templates/login.php');
         }
-
     }
     private function openSession($user): void
     {
