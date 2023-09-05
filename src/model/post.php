@@ -41,12 +41,12 @@ class Post
         $this->author = $author;
     }
 
-    public function getid(): int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setid(int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

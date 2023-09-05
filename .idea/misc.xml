@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpEntryPointsManager">
+    <entry_point>
+      <entry_point TYPE="phpMethod" FQNAME="\Application\Model\Category\Category __construct" />
+      <entry_point TYPE="phpClass" FQNAME="\Application\Model\Category\Category" />
+    </entry_point>
+    <pattern value="\Application\Model\Category\Category" member="__construct" />
+    <pattern value="\Application\Model\Category\Category" />
+  </component>
+</project>
