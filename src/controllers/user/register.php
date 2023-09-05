@@ -30,20 +30,24 @@ class Register
                         // On peut valider le fichier et le stocker définitivement
                         $image = 'uploads/' . basename($_FILES['avatar']['name']);
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $image);
-                        echo "L'envoi a bien été effectué !";
+                        $successMessage = "L'envoi a bien été effectué !";
                     } else {
-                        echo "L'envoi a échoué !";
+                        $errorMessage = "L'envoi a échoué !";
                     }
                 }
             }
-            echo "Pas d'image";
             $connection = new DatabaseConnection();
             $userRepository = new UserRepository();
             $userRepository->connection = $connection;
             $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-            $userRepository->createUser(htmlspecialchars($_POST['lastName']), htmlspecialchars($_POST['firstName']), htmlspecialchars($_POST['login']),
+            $user = $userRepository->createUser(htmlspecialchars($_POST['lastName']), htmlspecialchars($_POST['firstName']), htmlspecialchars($_POST['login']),
                 htmlspecialchars($hash), htmlspecialchars($_POST['mail']), $image);
+            if ($user) {
+                $successMessage = "Votre compte a bien été créé";
+            } else {
+                $errorMessage = "Votre création de compte a échoué !";
+            }
             /*header('Location: index.php');*/
             require('templates/register.php');
         } else {
