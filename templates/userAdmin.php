@@ -29,6 +29,9 @@
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($user->firstName); ?>
                                     <?= htmlspecialchars($user->lastName); ?></h5>
+                                <div class="p-3 border bg-light">
+                                    <img src="<?= htmlspecialchars($user->avatar); ?>" class="img-thumbnail" alt="Avatar de <?=htmlspecialchars($user->firstName)?>">
+                                </div>
                                         <p class="card-text">Identifiant : <em><?= $user->login; ?><br>
                                         Adresse mail : <em><?= $user->mail; ?><br>
                                         Rôle : <em><?php if($user->role) { ?>Administrateur

@@ -21,13 +21,13 @@
                 <div class="row gx-5">
                     <div class="col">
                         <div class="p-3 border bg-light">
-                            <img src="src/public/assets/img/photo.jpg" class="img-thumbnail" alt="...">
+                            <img src="src/public/assets/img/photo.jpg" class="img-thumbnail" alt="Photo du créateur du blog">
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3">
                             <h2>Lucea Jonathan</h2>
-                            <p>Le développeur Symfony qui saura donner un élan de popularité à votre entreprise</p>
+                            <p>Le développeur qui saura concrétiser vos projets de sites web afin de donner un élan de popularité à votre entreprise</p>
                             <div class="d-flex justify-content-end mb-4">
                                 <a class="btn btn-primary text-uppercase"
                                    href="src/public/assets/img/cv.pdf">Mon CV
@@ -35,24 +35,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container px-4">
-                        <div class="row gx-5">
-                            <div class="col">
-                                <div class="p-3 border bg-light"><img src="src/public/assets/img/photo.jpg" class="img-thumbnail" alt="..."></div>
-                            </div>
-                            <div class="col">
-                                <div class="p-3 border bg-light"><div class="p-3">
-                                        <h2>Lucea Jonathan</h2>
-                                        <p>Le développeur Symfony qui saura concrétiser vos projets de sites web</p>
-                                        <div class="d-flex justify-content-end mb-4">
-                                            <a class="btn btn-primary text-uppercase"
-                                               href="src/public/assets/img/cv.pdf">Mon CV
-                                            </a>
-                                        </div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- Divider-->
             <hr class="my-4" />

@@ -24,9 +24,9 @@ class Login
                     if ($verify) {
                         $this->openSession($user);
                         if ($_SESSION['role']==1) {
-                            require('templates/login.php');
+                            header('Location: index.php?action=postAdmin');
                         } else {
-                            require('templates/login.php');
+                            header('Location: index.php');
                         }
                     } else {
                         $errorMessage = 'Mot de passe incorrect';
@@ -40,6 +40,7 @@ class Login
         }   else {
                 require('templates/login.php');
         }
+
     }
     private function openSession($user): void
     {
