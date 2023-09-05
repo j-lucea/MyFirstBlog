@@ -21,7 +21,8 @@
                 <div class="my-5">
                     <!-- Subscription Form -->
                     <form id="addForm" method="post"
-                          action="index.php?action=register">
+                          action="index.php?action=register"
+                          enctype="multipart/form-data">
                         <div class="form-floating">
                             <input class="form-control" id="lastName"
                                    name="lastName" type="text"
