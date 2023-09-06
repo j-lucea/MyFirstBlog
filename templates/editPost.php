@@ -28,16 +28,16 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value=<?= htmlspecialchars($post->title) ?>
+                                   value="<?= $post->title ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value=<?= htmlspecialchars($post->chapo) ?>
+                                   value="<?= $post->chapo ?>"
                                    maxlength="255" required/>
-                            <label for="chapo">Description</label>
+                            <label for="chapo">Chapô</label>
                         </div>
 <!--                        <div class="form-floating">
                             <input class="form-control" id="image"
@@ -47,25 +47,25 @@
                         </div>-->
                         <div class="form-floating">
                             <select class="form-select" name="category">
-                                <option value="1" selected>Choississez une catégorie
-                                </option>
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                    <option value=<?= $category->id; ?>>
-                                        <?= $category->name; ?>
-                                    </option>
-                                    <?php
-                                }
-                                ?>
+                                <option value=<?= $category->id; ?>
+                                    <?php if ($category->id == $post->category) { ?>
+                                        selected>
+                                    <?php } else { ?>
+                                        >
+                                    <?php } ?>
+                                    <?= $category->name; ?>
+                                </option>
+                                <?php } ?>
                             </select>
                             <label for="category">Catégorie</label>
                         </div>
                         <div class="form-floating">
                             <textarea class="form-control" id="content"
                                       name="content"
-                                      style="height: 12rem" required><?= htmlspecialchars($post->content) ?>
-                            </textarea>
+                                      style="height: 12rem" required><?= $post->content ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />

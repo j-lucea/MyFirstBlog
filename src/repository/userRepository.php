@@ -5,6 +5,8 @@ namespace Application\Repository\UserRepository;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\User\User;
 
+require_once 'src/model/user.php';
+
 class UserRepository
 {
     public DatabaseConnection $connection;
@@ -21,9 +23,18 @@ class UserRepository
 
         $users = [];
         while (($row = $statement->fetch())) {
-            $user = new User($row['id'], $row['last_name'], $row['first_name'], $row['login'],
-                    $row['password'], $row['mail'], $row['role'], $row['avatar'],
-                    $row['french_creation_date'], $row['french_update_date']);
+            $user = new User(
+                $row['id'],
+                $row['last_name'],
+                $row['first_name'],
+                $row['login'],
+                $row['password'],
+                $row['mail'],
+                $row['role'],
+                $row['avatar'],
+                $row['french_creation_date'],
+                $row['french_update_date']
+            );
             $users[] = $user;
         }
         return $users;
@@ -41,13 +52,27 @@ class UserRepository
         if ($row === false) {
             return null;
         }
-        return new User($row['id'], $row['last_name'], $row['first_name'], $row['login'],
-            $row['password'], $row['mail'], $row['role'], $row['avatar'],
-            $row['french_creation_date'], $row['french_update_date']);
+        return new User(
+            $row['id'],
+            $row['last_name'],
+            $row['first_name'],
+            $row['login'],
+            $row['password'],
+            $row['mail'],
+            $row['role'],
+            $row['avatar'],
+            $row['french_creation_date'],
+            $row['french_update_date']
+        );
     }
-    public function createUser(string $last_name, string $first_name, string $login,
-                               string $password, string $mail, string $avatar): bool
-    {
+    public function createUser(
+        string $last_name,
+        string $first_name,
+        string $login,
+        string $password,
+        string $mail,
+        string $avatar
+    ): bool {
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO p5_user(last_name, first_name, login, password, mail, 
                     role, avatar, created_at, updated_at) 

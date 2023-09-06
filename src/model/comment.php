@@ -21,9 +21,15 @@ class Comment
      * @param string $author
      * @param string $post
      */
-    public function __construct(int $id, string $content, bool $status,
-      string $frenchCreationDate, string $frenchUpdateDate, string $author, string $post)
-    {
+    public function __construct(
+        int $id,
+        string $content,
+        bool $status,
+        string $frenchCreationDate,
+        string $frenchUpdateDate,
+        string $author,
+        string $post
+    ) {
         $this->id = $id;
         $this->content = $content;
         $this->status = $status;
@@ -103,4 +109,3 @@ class Comment
         $this->post = $post;
     }
 }
-

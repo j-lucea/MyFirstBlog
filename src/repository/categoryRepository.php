@@ -5,6 +5,8 @@ namespace Application\Repository\CategoryRepository;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Category\Category;
 
+require_once 'src/model/category.php';
+
 class CategoryRepository
 {
     public DatabaseConnection $connection;
@@ -17,7 +19,20 @@ class CategoryRepository
         $statement->execute();
         $categories = [];
         while (($row = $statement->fetch())) {
-            $category = new Category($row['id'],$row['name']);
+            $category = new Category($row['id'], $row['name']);
+            $categories[] = $category;
+        }
+        return $categories;
+    }
+    public function getCategory(): array
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            "SELECT id, name FROM p5_category WHERE id = ?"
+        );
+        $statement->execute();
+        $categories = [];
+        while (($row = $statement->fetch())) {
+            $category = new Category($row['id'], $row['name']);
             $categories[] = $category;
         }
         return $categories;

@@ -1,14 +1,11 @@
 <?php
 
-
 namespace Application\Controllers\User\Login;
-
-require_once('src/lib/database.php');
-require_once('src/model/user.php');
-require_once('src/repository/userRepository.php');
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Repository\UserRepository\UserRepository;
+
+require_once 'src/repository/userRepository.php';
 
 class Login
 {
@@ -19,28 +16,27 @@ class Login
                 $userRepository = new UserRepository();
                 $userRepository->connection = $connection;
                 $user = $userRepository->getUser(htmlspecialchars($_POST['login']));
-                if ($user) {
-                    $verify = password_verify($_POST['password'], $user->password);
-                    if ($verify) {
-                        $this->openSession($user);
-                        if ($_SESSION['role']==1) {
-                            header('Location: index.php?action=postAdmin');
-                        } else {
-                            header('Location: index.php');
-                        }
+            if ($user) {
+                $verify = password_verify($_POST['password'], $user->password);
+                if ($verify) {
+                    $this->openSession($user);
+                    if ($_SESSION['role']==1) {
+                        header('Location: index.php?action=postAdmin');
                     } else {
-                        $errorMessage = 'Mot de passe incorrect';
-                        require('templates/login.php');
+                        header('Location: index.php');
                     }
                 } else {
-                    $errorMessage = 'Les informations envoyées
-                    ne permettent pas de vous identifier';
+                    $errorMessage = 'Mot de passe incorrect';
                     require('templates/login.php');
                 }
-        }   else {
+            } else {
+                $errorMessage = 'Les informations envoyées
+                    ne permettent pas de vous identifier';
+                require('templates/login.php');
+            }
+        } else {
                 require('templates/login.php');
         }
-
     }
     private function openSession($user): void
     {

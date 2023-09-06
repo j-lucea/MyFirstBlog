@@ -8,43 +8,50 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1><?= htmlspecialchars($post->title) ?></h1>
-                    <h2 class="subheading"><?= htmlspecialchars($post->chapo) ?></h2>
+                    <h1><?= $post->title ?></h1>
+                    <h2 class="subheading"><?= $post->chapo ?></h2>
                     <span class="meta">
-                                Publié par <?= htmlspecialchars($post->author) ?>
-                                <em>le <?= $post->frenchCreationDate ?></em>
-                            </span>
+                                Publié par <?= $post->author ?>
+                                <?php
+                                if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
+                                    <em>le <?= $post->frenchCreationDate; ?></em>
+                                <?php } else { ?>
+                                    <br><em>Mis à jour le <?= $post->frenchUpdateDate; ?></em>
+                                <?php } ?>
+                            </span><br>
+                    <h3>Catégorie : <?= $post->category ?></h3>
                 </div>
             </div>
         </div>
     </div>
 </header>
 <!-- Post Content-->
-<article class="mb-4">
-    <div class="container px-4 px-lg-5">
+<main class="mb-4">
+    <article class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p><?= nl2br(htmlspecialchars($post->content)) ?></p>
+                <p><?= nl2br($post->content) ?></p>
                 <?php
-                    if ($comments) {
-                        ?>
+                if ($comments) {
+                    ?>
                         <h2 class="section-heading">Commentaires</h2>
-                        <?php
-                        foreach ($comments as $comment) {
-                            ?>
-                            <p><strong><?= htmlspecialchars($comment->author) ?></strong>
+                    <?php
+                    foreach ($comments as $comment) {
+                        ?>
+                            <p><strong><?= $comment->author ?></strong>
                                 le <?= $comment->frenchCreationDate ?>
-                                <?php if(!empty($_SESSION) && $comment->author == $_SESSION['firstName']) { ?>(<a
+                            <?php if (!empty($_SESSION) && $comment->author == $_SESSION['firstName']) {
+                                ?>(<a
                                         href="index.php?action=updateComment&id=<?=
-                                        $comment->id ?>">modifier</a>)
-                                <?php } ?>
+                                        $comment->id ?>">Modifier</a>)
+                            <?php } ?>
                             </p>
-                            <p><?= nl2br(htmlspecialchars($comment->content)) ?></p>
+                            <p><?= nl2br($comment->content) ?></p>
                             <?php
-                        }
                     }
+                }
                 ?>
-                <?php if(!empty($_SESSION)) { ?>
+                <?php if (!empty($_SESSION)) { ?>
                 <div class="my-5">
                     <form action="index.php?action=addComment&id=<?= $post->id ?>"
                           method="post">
@@ -70,8 +77,8 @@
                 <?php } ?>
             </div>
         </div>
-    </div>
-</article>
+    </article>
+</main>
 
 <?php $content = ob_get_clean(); ?>
 

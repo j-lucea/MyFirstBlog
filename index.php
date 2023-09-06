@@ -77,13 +77,13 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        }   elseif ($_GET['action'] === 'deleteComment') {
+        } elseif ($_GET['action'] === 'deleteComment') {
             (new DeleteComment())->execute();
-        }   elseif ($_GET['action'] === 'activateComment') {
+        } elseif ($_GET['action'] === 'activateComment') {
             (new ActivateComment())->execute();
-        }   elseif ($_GET['action'] === 'commentAdmin') {
+        } elseif ($_GET['action'] === 'commentAdmin') {
             (new CommentAdmin())->execute();
-        }   elseif ($_GET['action'] === 'postList') {
+        } elseif ($_GET['action'] === 'postList') {
             (new PostList())->execute();
         } elseif ($_GET['action'] === 'postAdmin') {
             (new PostAdmin())->execute();
@@ -97,7 +97,7 @@ try {
             (new UserAdmin())->execute();
         } elseif ($_GET['action'] === 'deleteUser') {
             (new DeleteUser())->execute();
-        }   elseif ($_GET['action'] === 'contact') {
+        } elseif ($_GET['action'] === 'contact') {
             (new Contact())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
@@ -105,15 +105,15 @@ try {
     } else {
         if (isset($_POST['mail']) && isset($_POST['password'])) {
             foreach ($users as $user) {
-                if (
-                    $user['mail'] === $_POST['mail'] &&
+                if ($user['mail'] === $_POST['mail'] &&
                     $user['password'] === $_POST['password']
                 ) {
                     $loggedUser = [
                         'email' => $user['mail'],
                     ];
                 } else {
-                    $errorMessage = sprintf('Les informations envoyées 
+                    $errorMessage = sprintf(
+                        'Les informations envoyées 
                     ne permettent pas de vous identifier : (%s/%s)',
                         $_POST['mail'],
                         $_POST['password']

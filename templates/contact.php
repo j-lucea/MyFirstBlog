@@ -10,7 +10,8 @@
                 <div class="page-heading">
                     <h1><?php echo $title ?></h1>
                     <span class="subheading">Des questions ?
-                        J'ai les réponses.</span>
+                        J'ai les réponses.
+                    </span>
                 </div>
             </div>
         </div>
@@ -48,8 +49,7 @@
                         <div class="form-floating">
                             <textarea class="form-control" id="message"
                                       name="message"
-                                      style="height: 12rem" required>
-                            </textarea>
+                                      style="height: 12rem" required></textarea>
                             <label for="message">Message</label>
                         </div>
                         <br />

@@ -2,8 +2,8 @@
 
 namespace Application\Controllers\Homepage;
 
-require_once('src/lib/database.php');
-require_once('src/repository/postRepository.php');
+require_once 'src/lib/database.php';
+require_once 'src/repository/postRepository.php';
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Repository\PostRepository\PostRepository;

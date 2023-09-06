@@ -37,10 +37,10 @@
                                         href="index.php?action=postList">Articles</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=contact">Contact</a></li>
-                <?php if(!empty($_SESSION)) { ?>
+                <?php if (!empty($_SESSION)) { ?>
                 <!--<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=logout">Déconnexion</a></li>-->
-                    <?php if($_SESSION['role'] == 1): ?>
+                    <?php if ($_SESSION['role'] == 1) : ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4"
                                href="#" role="button" data-bs-toggle="dropdown"

@@ -14,12 +14,12 @@
     </div>
 </header>
 <!-- Login form -->
-<div class="container px-4 px-lg-5">
+<main class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <form action="index.php?action=login" method="post">
                 <!-- If error, we show it -->
-                <?php if(!empty($errorMessage)) : ?>
+                <?php if (!empty($errorMessage)) : ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $errorMessage; ?>
                     </div>
@@ -45,7 +45,7 @@
                 <br>
         </div>
     </div>
-</div>
+</main>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout.php') ?>

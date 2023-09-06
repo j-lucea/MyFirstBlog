@@ -2,7 +2,8 @@
 
 namespace Application\Model\User;
 
-class User {
+class User
+{
     public int $id;
     public string $lastName;
     public string $firstName;
@@ -26,11 +27,18 @@ class User {
      * @param string $frenchCreationDate
      * @param string $frenchUpdateDate
      */
-    public function __construct(int $id, string $lastName, string $firstName,
-                                string $login, string $password, string $mail,
-                                bool $role, string $avatar, string $frenchCreationDate,
-                                string $frenchUpdateDate)
-    {
+    public function __construct(
+        int $id,
+        string $lastName,
+        string $firstName,
+        string $login,
+        string $password,
+        string $mail,
+        bool $role,
+        string $avatar,
+        string $frenchCreationDate,
+        string $frenchUpdateDate
+    ) {
         $this->id = $id;
         $this->lastName = $lastName;
         $this->firstName = $firstName;
@@ -142,6 +150,4 @@ class User {
     {
         $this->frenchUpdateDate = $frenchUpdateDate;
     }
-
-
 }

@@ -33,7 +33,7 @@
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
                                    maxlength="255" required/>
-                            <label for="chapo">Description</label>
+                            <label for="chapo">Chapô</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="image"
@@ -43,16 +43,16 @@
                         </div>
                         <div class="form-floating">
                             <select class="form-select" name="category">
-                                <option value="1" selected>Choississez une catégorie
+                                <option value=0 selected>Choississez une catégorie
                                 </option>
                                 <?php
-                                    foreach ($categories as $category) {
-                                ?>
+                                foreach ($categories as $category) {
+                                    ?>
                                 <option value=<?= $category->id; ?>>
                                     <?= $category->name; ?>
                                 </option>
-                                <?php
-                                    }
+                                    <?php
+                                }
                                 ?>
                             </select>
                             <label for="category">Catégorie</label>
@@ -60,8 +60,7 @@
                         <div class="form-floating">
                             <textarea class="form-control" id="content"
                                       name="content"
-                                      style="height: 12rem" required>
-                            </textarea>
+                                      style="height: 12rem" required></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />

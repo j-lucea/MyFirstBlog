@@ -15,7 +15,7 @@
   </component>
   <component name="PhpCodeSniffer">
     <phpcs_settings>
-      <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/vendor/bin/phpcbf" tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
+      <PhpCSConfiguration beautifier_path="/bin/phpcbf" tool_path="/bin/phpcs" />
     </phpcs_settings>
   </component>
   <component name="PhpIncludePathManager">

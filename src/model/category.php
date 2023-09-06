@@ -2,7 +2,7 @@
 
 namespace Application\Model\Category;
 
-Class Category
+class Category
 {
     public int $id;
     public string $name;
@@ -36,6 +36,4 @@ Class Category
     {
         $this->name = $name;
     }
-
-
 }
