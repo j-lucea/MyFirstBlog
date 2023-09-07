@@ -24,18 +24,18 @@
                 <div class="my-5">
                     <!-- Contact Form -->
                     <form id="contactForm" method="post"
-                          action="index.php?action=editPost&id=<?= htmlspecialchars($post->id) ?>">
+                          action="index.php?action=editPost&id=<?= urlencode($post->id) ?>">
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?= $post->title ?>"
+                                   value="<?= esc_attr($post->title) ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?= $post->chapo ?>"
+                                   value="<?= esc_attr($post->chapo) ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -50,13 +50,13 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= $category->id; ?>
+                                <option value=<?= esc_attr($category->id) ?>
                                     <?php if ($category->id == $post->category) { ?>
                                         selected>
                                     <?php } else { ?>
                                         >
                                     <?php } ?>
-                                    <?= $category->name; ?>
+                                    <?= esc_attr($category->name) ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -65,7 +65,7 @@
                         <div class="form-floating">
                             <textarea class="form-control" id="content"
                                       name="content"
-                                      style="height: 12rem" required><?= $post->content ?></textarea>
+                                      style="height: 12rem" required><?= esc_attr($post->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />

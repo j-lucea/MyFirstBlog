@@ -15,7 +15,7 @@ class UpdateComment
     {
         // It handles the form submission when there is an input.
         if ($input !== null) {
-            if (!empty($input['content']) && !empty($_SESSION['id'])) {
+            if (empty($input['content']) === FALSE && empty($_SESSION['id']) === FALSE) {
                 $author = $_SESSION['id'];
                 $content = $input['content'];
             } else {
