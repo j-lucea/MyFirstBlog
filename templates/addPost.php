@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading"><?= esc_attr($title) ?></span>
+                    <span class="subheading"><?= htmlspecialchars($title) ?></span>
                 </div>
             </div>
         </div>
@@ -42,8 +42,8 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= $category->id; ?>>
-                                    <?= $category->name; ?>
+                                <option value=<?= htmlspecialchars($category->id) ?>>
+                                    <?= htmlspecialchars($category->name) ?>
                                 </option>
                                     <?php
                                 }
