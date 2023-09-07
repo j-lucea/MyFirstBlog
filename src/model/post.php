@@ -25,11 +25,17 @@ class Post
      * @param string $category
      * @param string $author
      */
-    public function __construct(int $id, string $title, string $chapo,
-                                string $content, string $image,
-                                string $frenchCreationDate, string $frenchUpdateDate,
-                                string $category, string $author)
-    {
+    public function __construct(
+        int $id,
+        string $title,
+        string $chapo,
+        string $content,
+        string $image,
+        string $frenchCreationDate,
+        string $frenchUpdateDate,
+        string $category,
+        string $author
+    ) {
         $this->id = $id;
         $this->title = $title;
         $this->chapo = $chapo;
@@ -130,5 +136,4 @@ class Post
     {
         $this->author = $author;
     }
-
 }

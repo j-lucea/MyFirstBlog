@@ -64,7 +64,7 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($_GET['action'] === 'updateComment') {
+        } elseif ($_GET['action'] === 'updateComment' && !empty($_SESSION['id'])) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
                 // It sets the input only when the HTTP method is POST
@@ -77,27 +77,27 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        }   elseif ($_GET['action'] === 'deleteComment') {
+        } elseif ($_GET['action'] === 'deleteComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new DeleteComment())->execute();
-        }   elseif ($_GET['action'] === 'activateComment') {
+        } elseif ($_GET['action'] === 'activateComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new ActivateComment())->execute();
-        }   elseif ($_GET['action'] === 'commentAdmin') {
+        } elseif ($_GET['action'] === 'commentAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new CommentAdmin())->execute();
-        }   elseif ($_GET['action'] === 'postList') {
+        } elseif ($_GET['action'] === 'postList') {
             (new PostList())->execute();
-        } elseif ($_GET['action'] === 'postAdmin') {
+        } elseif ($_GET['action'] === 'postAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new PostAdmin())->execute();
-        } elseif ($_GET['action'] === 'addPost') {
+        } elseif ($_GET['action'] === 'addPost' && !empty($_SESSION['id'])) {
             (new AddPost())->execute();
-        } elseif ($_GET['action'] === 'editPost') {
+        } elseif ($_GET['action'] === 'editPost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new EditPost())->execute();
-        } elseif ($_GET['action'] === 'deletePost') {
+        } elseif ($_GET['action'] === 'deletePost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new DeletePost())->execute();
-        } elseif ($_GET['action'] === 'userAdmin') {
+        } elseif ($_GET['action'] === 'userAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new UserAdmin())->execute();
-        } elseif ($_GET['action'] === 'deleteUser') {
+        } elseif ($_GET['action'] === 'deleteUser' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new DeleteUser())->execute();
-        }   elseif ($_GET['action'] === 'contact') {
+        } elseif ($_GET['action'] === 'contact') {
             (new Contact())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
@@ -105,15 +105,15 @@ try {
     } else {
         if (isset($_POST['mail']) && isset($_POST['password'])) {
             foreach ($users as $user) {
-                if (
-                    $user['mail'] === $_POST['mail'] &&
+                if ($user['mail'] === $_POST['mail'] &&
                     $user['password'] === $_POST['password']
                 ) {
                     $loggedUser = [
                         'email' => $user['mail'],
                     ];
                 } else {
-                    $errorMessage = sprintf('Les informations envoyées 
+                    $errorMessage = sprintf(
+                        'Les informations envoyées 
                     ne permettent pas de vous identifier : (%s/%s)',
                         $_POST['mail'],
                         $_POST['password']

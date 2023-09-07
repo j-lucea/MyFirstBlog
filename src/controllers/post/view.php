@@ -2,15 +2,14 @@
 
 namespace Application\Controllers\Post\View;
 
-require_once('src/lib/database.php');
-require_once('src/model/comment.php');
-require_once('src/model/post.php');
-require_once('src/repository/postRepository.php');
-require_once('src/repository/commentRepository.php');
-
 use Application\Lib\Database\DatabaseConnection;
+use Application\Repository\CategoryRepository\CategoryRepository;
 use Application\Repository\CommentRepository\CommentRepository;
 use Application\Repository\PostRepository\PostRepository;
+
+require_once 'src/lib/database.php';
+require_once 'src/repository/postRepository.php';
+require_once 'src/repository/commentRepository.php';
 
 class ViewPost
 {
@@ -25,6 +24,10 @@ class ViewPost
         $commentRepository = new CommentRepository();
         $commentRepository->connection = $connection;
         $comments = $commentRepository->getActivatedComments(htmlspecialchars($identifier));
+
+        $categoryRepository = new CategoryRepository();
+        $categoryRepository->connection = $connection;
+        $category = $categoryRepository->getCategory($post->category);
 
         require('templates/post.php');
     }

@@ -5,6 +5,8 @@ namespace Application\Repository\PostRepository;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Post\Post;
 
+require_once 'src/model/post.php';
+
 class PostRepository
 {
     public DatabaseConnection $connection;
@@ -20,9 +22,17 @@ class PostRepository
         );
         $statement->execute([$id]);
         $row = $statement->fetch();
-        return new Post($row['id'],$row['title'], $row['chapo'], $row['content'],
-                $row['image'], $row['french_creation_date'], $row['french_update_date'],
-                $row['category_id'], $row['author']);
+        return new Post(
+            $row['id'],
+            $row['title'],
+            $row['chapo'],
+            $row['content'],
+            $row['image'],
+            $row['french_creation_date'],
+            $row['french_update_date'],
+            $row['category_id'],
+            $row['author']
+        );
     }
 
     public function getPosts(): array
@@ -36,9 +46,17 @@ class PostRepository
         );
         $posts = [];
         while (($row = $statement->fetch())) {
-            $post = new Post($row['id'],$row['title'], $row['chapo'], $row['content'],
-                $row['image'], $row['french_creation_date'], $row['french_update_date'],
-                $row['category_id'], $row['author']);
+            $post = new Post(
+                $row['id'],
+                $row['title'],
+                $row['chapo'],
+                $row['content'],
+                $row['image'],
+                $row['french_creation_date'],
+                $row['french_update_date'],
+                $row['category_id'],
+                $row['author']
+            );
             $posts[] = $post;
         }
         return $posts;
@@ -54,28 +72,44 @@ class PostRepository
         );
         $posts = [];
         while (($row = $statement->fetch())) {
-            $post = new Post($row['id'],$row['title'], $row['chapo'], $row['content'],
-                $row['image'], $row['french_creation_date'], $row['french_update_date'],
-                $row['category_id'], $row['author']);
+            $post = new Post(
+                $row['id'],
+                $row['title'],
+                $row['chapo'],
+                $row['content'],
+                $row['image'],
+                $row['french_creation_date'],
+                $row['french_update_date'],
+                $row['category_id'],
+                $row['author']
+            );
             $posts[] = $post;
         }
         return $posts;
     }
-    public function createPost(string $title, string $chapo, string $content,
-                               string $image, int $categoryId, int $userId): bool
-    {
+    public function createPost(
+        string $title,
+        string $chapo,
+        string $content,
+        int $categoryId,
+        int $userId
+    ): bool {
         $statement = $this->connection->getConnection()->prepare(
-            'INSERT INTO p5_post(title, chapo, content, image, category_id, 
+            'INSERT INTO p5_post(title, chapo, content, category_id, 
                     user_id, created_at, updated_at) 
-                    VALUES(?, ?, ?, ?, ?, ?, NOW(), NOW())'
+                    VALUES(?, ?, ?, ?, ?, NOW(), NOW())'
         );
-        $affectedLines = $statement->execute([$title, $chapo, $content, $image,
+        $affectedLines = $statement->execute([$title, $chapo, $content,
             $categoryId, $userId]);
         return ($affectedLines > 0);
     }
-    public function editPost(string $id, string $title, string $chapo, string $content,
-                             string $image, int $category, int $userId): bool
-    {
+    public function editPost(
+        string $id,
+        string $title,
+        string $chapo,
+        string $content,
+        int $category
+    ): bool {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE p5_post SET title = ?, chapo = ?, content = ?, 
                    category_id = ?, updated_at = NOW() WHERE id = ?'

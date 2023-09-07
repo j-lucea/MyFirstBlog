@@ -15,48 +15,54 @@
     </div>
 </header>
 <!-- Main Content-->
-<div class="container px-4 px-lg-5">
+<main class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
                 <?php
-                    foreach ($users as $user) {
-                ?>
+                foreach ($users as $user) {
+                    ?>
                 <!-- Posts preview-->
                 <!--Card-->
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($user->firstName); ?>
-                                    <?= htmlspecialchars($user->lastName); ?></h5>
+                                <h5 class="card-title"><?= $user->firstName; ?>
+                                <?= $user->lastName; ?></h5>
                                 <div class="p-3 border bg-light">
-                                    <img src="<?= htmlspecialchars($user->avatar); ?>" class="img-thumbnail" alt="Avatar de <?=htmlspecialchars($user->firstName)?>">
+                                    <img src="<?= $user->avatar; ?>" class="img-thumbnail"
+                                         alt="Avatar de <?=$user->firstName?>">
                                 </div>
                                         <p class="card-text">Identifiant : <em><?= $user->login; ?><br>
                                         Adresse mail : <em><?= $user->mail; ?><br>
-                                        Rôle : <em><?php if($user->role) { ?>Administrateur
-                                                        <?php } else { ?>Utilisateur<?php } ?><br>
+                                        Rôle : <em><?php if ($user->role) {
+                                            ?>Administrateur
+                                                   <?php } else {
+                                                        ?>Utilisateur<?php
+                                                   } ?><br>
                                         Date de création :  le <?= $user->frenchCreationDate; ?>
-                                        <?php
-                                        if ($user->frenchCreationDate != $user->frenchUpdateDate)
-                                        { ?>
+                                    <?php
+                                    if ($user->frenchCreationDate != $user->frenchUpdateDate) { ?>
                                             Dernière modification :  le <?= $user->frenchUpdateDate; ?>
-                                        <?php } ?>
+                                    <?php } ?>
                                 </p>
                                 <a href="index.php?action=deleteUser&id=<?= urlencode($user->id) ?>"
-                                   class="btn btn-danger" onclick="return confirm('Voulez-vous supprimer définitivement ce compte ?')">Supprimer</a>
+                                   class="btn btn-danger"
+                                   onclick="return confirm('Voulez-vous supprimer définitivement ce compte ?')">
+                                    Supprimer
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" />
-                <?php
-            }
-            ?>
+                    <?php
+                }
+                ?>
         </div>
     </div>
-</div>
+</main>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout.php') ?>

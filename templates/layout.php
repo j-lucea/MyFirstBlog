@@ -37,10 +37,10 @@
                                         href="index.php?action=postList">Articles</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=contact">Contact</a></li>
-                <?php if(!empty($_SESSION)) { ?>
+                <?php if (!empty($_SESSION)) { ?>
                 <!--<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                                         href="index.php?action=logout">Déconnexion</a></li>-->
-                    <?php if($_SESSION['role'] == 1): ?>
+                    <?php if ($_SESSION['role'] == 1) : ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4"
                                href="#" role="button" data-bs-toggle="dropdown"
@@ -82,25 +82,8 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="index.php">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="index.php">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse">
-
-                                        </i>
-                                    </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://github.com/j-lucea">
+                        <a href="https://github.com/j-lucea"
+                           target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse">

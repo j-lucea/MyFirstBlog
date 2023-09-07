@@ -5,6 +5,8 @@ namespace Application\Repository\CommentRepository;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Comment\Comment;
 
+require_once 'src/model/comment.php';
+
 class CommentRepository
 {
     public DatabaseConnection $connection;
@@ -21,9 +23,15 @@ class CommentRepository
         $statement->execute([$post]);
         $comments = [];
         while (($row = $statement->fetch())) {
-            $comment = new Comment($row['id'], $row['content'], $row['status'],
-                $row['french_creation_date'], $row['french_update_date'],
-                $row['author'], $row['post_id']);
+            $comment = new Comment(
+                $row['id'],
+                $row['content'],
+                $row['status'],
+                $row['french_creation_date'],
+                $row['french_update_date'],
+                $row['author'],
+                $row['post_id']
+            );
             $comments[] = $comment;
         }
         return $comments;
@@ -41,9 +49,15 @@ class CommentRepository
         $statement->execute();
         $comments = [];
         while (($row = $statement->fetch())) {
-            $comment = new Comment($row['id'], $row['content'], $row['status'],
-                $row['french_creation_date'], $row['french_update_date'],
-                $row['author'], $row['post_id']);
+            $comment = new Comment(
+                $row['id'],
+                $row['content'],
+                $row['status'],
+                $row['french_creation_date'],
+                $row['french_update_date'],
+                $row['author'],
+                $row['post_id']
+            );
             $comments[] = $comment;
         }
         return $comments;
@@ -64,9 +78,15 @@ class CommentRepository
         if ($row === false) {
             return null;
         }
-        return new Comment($row['id'], $row['content'], $row['status'],
-            $row['french_creation_date'], $row['french_update_date'],
-            $row['author'], $row['post_id']);
+        return new Comment(
+            $row['id'],
+            $row['content'],
+            $row['status'],
+            $row['french_creation_date'],
+            $row['french_update_date'],
+            $row['author'],
+            $row['post_id']
+        );
     }
 
     public function createComment(int $post, int $author, string $comment): bool
