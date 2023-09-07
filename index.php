@@ -2,23 +2,23 @@
 
 session_start();
 
-require_once('src/controllers/comment/add.php');
-require_once('src/controllers/comment/activate.php');
-require_once('src/controllers/comment/update.php');
-require_once('src/controllers/comment/admin.php');
-require_once('src/controllers/comment/delete.php');
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/post/view.php');
-require_once('src/controllers/post/add.php');
-require_once('src/controllers/post/edit.php');
-require_once('src/controllers/post/delete.php');
-require_once('src/controllers/post/list.php');
-require_once('src/controllers/post/admin.php');
-require_once('src/controllers/contact.php');
-require_once('src/controllers/user/login.php');
-require_once('src/controllers/user/register.php');
-require_once('src/controllers/user/admin.php');
-require_once('src/controllers/user/delete.php');
+require_once 'src/controllers/comment/add.php';
+require_once 'src/controllers/comment/activate.php';
+require_once 'src/controllers/comment/update.php';
+require_once 'src/controllers/comment/admin.php';
+require_once 'src/controllers/comment/delete.php';
+require_once 'src/controllers/homepage.php';
+require_once 'src/controllers/post/view.php';
+require_once 'src/controllers/post/add.php';
+require_once 'src/controllers/post/edit.php';
+require_once 'src/controllers/post/delete.php';
+require_once 'src/controllers/post/list.php';
+require_once 'src/controllers/post/admin.php';
+require_once 'src/controllers/contact.php';
+require_once 'src/controllers/user/login.php';
+require_once 'src/controllers/user/register.php';
+require_once 'src/controllers/user/admin.php';
+require_once 'src/controllers/user/delete.php';
 
 use Application\Controllers\Comment\Add\AddComment;
 use Application\Controllers\Comment\Activate\ActivateComment;
