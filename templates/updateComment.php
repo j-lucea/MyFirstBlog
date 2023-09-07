@@ -25,7 +25,7 @@
                     <!-- Contact Form -->
                     <form method="post"
                           action="index.php?action=updateComment&id=
-                          <?= $comment->id ?>">
+                          <?= urlencode($comment->id) ?>">
                         <div class="form-floating">
                             <textarea class="form-control" id="content"
                                       name="content"
@@ -35,10 +35,10 @@
                         </div>
                         <br />
                         <input type="hidden" id="postId" name="postId"
-                               value="<?= $comment->post ?>" />
+                               value="<?= htmlspecialchars($comment->post) ?>" />
                         <!-- Return link -->
                         <a class="btn btn-primary text-uppercase"
-                           href="index.php?action=post&id=<?= $comment->post ?>">
+                           href="index.php?action=post&id=<?= htmlspecialchars($comment->post) ?>">
                             Retour</a>
                         <!-- Submit Button-->
                         <button class="btn btn-success text-uppercase"
