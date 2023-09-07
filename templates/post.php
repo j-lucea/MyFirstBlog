@@ -3,23 +3,23 @@
 <?php ob_start(); ?>
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url(<?= htmlspecialchars($post->image) ?>)">
+<header class="masthead" style="background-image: url(<?= esc_attr($post->image) ?>)">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1><?= htmlspecialchars($post->title) ?></h1>
-                    <h2 class="subheading"><?= htmlspecialchars($post->chapo) ?></h2>
+                    <h1><?= esc_attr($post->title) ?></h1>
+                    <h2 class="subheading"><?= esc_attr($post->chapo) ?></h2>
                     <span class="meta">
-                                Publié par <?= htmlspecialchars($post->author) ?>
+                                Publié par <?= esc_attr($post->author) ?>
                                 <?php
                                 if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                    <em>le <?= htmlspecialchars($post->frenchCreationDate) ?></em>
+                                    <em>le <?= esc_attr($post->frenchCreationDate) ?></em>
                                 <?php } else { ?>
-                                    <br><em>Mis à jour le <?= htmlspecialchars($post->frenchUpdateDate) ?></em>
+                                    <br><em>Mis à jour le <?= esc_attr($post->frenchUpdateDate) ?></em>
                                 <?php } ?>
                             </span><br>
-                    <h3>Catégorie : <?= htmlspecialchars($category->name) ?></h3>
+                    <h3>Catégorie : <?= esc_attr($category->name) ?></h3>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     <?php
                     foreach ($comments as $comment) {
                         ?>
-                            <p><strong><?= htmlspecialchars($comment->author) ?></strong>
+                            <p><strong><?= esc_attr($comment->author) ?></strong>
                                 le <?= $comment->frenchCreationDate ?>
                             <?php if (!empty($_SESSION) && $comment->author == $_SESSION['firstName']) {
                                 ?>(<a
@@ -46,7 +46,7 @@
                                         urlencode($comment->id) ?>">Modifier</a>)
                             <?php } ?>
                             </p>
-                            <p><?= htmlspecialchars($comment->content) ?></p>
+                            <p><?= esc_attr($comment->content) ?></p>
                             <?php
                     }
                 }

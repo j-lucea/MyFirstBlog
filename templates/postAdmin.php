@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php htmlspecialchars($title) ?></span>
+                    <span class="subheading"><?php esc_attr($title) ?></span>
                 </div>
             </div>
         </div>
@@ -32,13 +32,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title"><?= htmlspecialchars($post->title); ?></h5>
-                        <p class="card-text">Publié par <em><?= htmlspecialchars($post->author) ?>
+                        <h5 class="card-title"><?= esc_attr($post->title); ?></h5>
+                        <p class="card-text">Publié par <em><?= esc_attr($post->author) ?>
                             <?php
                             if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                le <?= htmlspecialchars($post->frenchCreationDate) ?>
+                                le <?= esc_attr($post->frenchCreationDate) ?>
                             <?php } else { ?>
-                                <br>Mis à jour le <?= htmlspecialchars($post->frenchUpdateDate) ?>
+                                <br>Mis à jour le <?= esc_attr($post->frenchUpdateDate) ?>
                             <?php } ?>
                         </p>
                         <a href="index.php?action=post&id=<?= urlencode($post->id) ?>"

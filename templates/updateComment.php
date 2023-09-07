@@ -30,15 +30,15 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= htmlspecialchars($comment->content) ?></textarea>
+                                      required><?= esc_attr($comment->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
                         <input type="hidden" id="postId" name="postId"
-                               value="<?= htmlspecialchars($comment->post) ?>" />
+                               value="<?= esc_attr($comment->post) ?>" />
                         <!-- Return link -->
                         <a class="btn btn-primary text-uppercase"
-                           href="index.php?action=post&id=<?= htmlspecialchars($comment->post) ?>">
+                           href="index.php?action=post&id=<?= esc_attr($comment->post) ?>">
                             Retour</a>
                         <!-- Submit Button-->
                         <button class="btn btn-success text-uppercase"
