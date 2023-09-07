@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php htmlspecialchars($title) ?></span>
+                    <span class="subheading"><?php esc_attr($title) ?></span>
                 </div>
             </div>
         </div>
@@ -27,23 +27,23 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($user->firstName) ?>
-                                <?= htmlspecialchars($user->lastName) ?></h5>
+                                <h5 class="card-title"><?= esc_attr($user->firstName) ?>
+                                <?= esc_attr($user->lastName) ?></h5>
                                 <div class="p-3 border bg-light">
-                                    <img src="<?= htmlspecialchars($user->avatar) ?>" class="img-thumbnail"
-                                         alt="Avatar de <?= htmlspecialchars($user->firstName) ?>">
+                                    <img src="<?= esc_attr($user->avatar) ?>" class="img-thumbnail"
+                                         alt="Avatar de <?= esc_attr($user->firstName) ?>">
                                 </div>
-                                        <p class="card-text">Identifiant : <em><?= htmlspecialchars($user->login) ?><br>
-                                        Adresse mail : <em><?= htmlspecialchars($user->mail) ?><br>
+                                        <p class="card-text">Identifiant : <em><?= esc_attr($user->login) ?><br>
+                                        Adresse mail : <em><?= esc_attr($user->mail) ?><br>
                                         Rôle : <em><?php if ($user->role) {
                                             ?>Administrateur
                                                    <?php } else {
                                                         ?>Utilisateur<?php
                                                    } ?><br>
-                                        Date de création :  le <?= htmlspecialchars($user->frenchCreationDate) ?>
+                                        Date de création :  le <?= esc_attr($user->frenchCreationDate) ?>
                                     <?php
                                     if ($user->frenchCreationDate != $user->frenchUpdateDate) { ?>
-                                            Dernière modification :  le <?= htmlspecialchars($user->frenchUpdateDate) ?>
+                                            Dernière modification :  le <?= esc_attr($user->frenchUpdateDate) ?>
                                     <?php } ?>
                                 </p>
                                 <a href="index.php?action=deleteUser&id=<?= urlencode($user->id) ?>"
