@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php echo $title ?></span>
+                    <span class="subheading"><?php esc_attr($title) ?></span>
                 </div>
             </div>
         </div>
@@ -27,14 +27,14 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($comment->author); ?></h5>
-                                <p class="card-text"><?= htmlspecialchars($comment->content); ?></p>
-                                <p class="card-text">Publié par <em><?= $comment->author; ?><br>
+                                <h5 class="card-title"><?= esc_attr($comment->author) ?></h5>
+                                <p class="card-text"><?= esc_attr($comment->content) ?></p>
+                                <p class="card-text">Publié par <em><?= esc_attr($comment->author) ?><br>
                                         <?php
                                         if ($comment->frenchCreationDate == $comment->frenchUpdateDate) { ?>
-                                            le <?= $comment->frenchCreationDate; ?>
+                                            le <?= esc_attr($comment->frenchCreationDate) ?>
                                         <?php } else { ?>
-                                            Modifié le <?= $comment->frenchUpdateDate; ?>
+                                            Modifié le <?= esc_attr($comment->frenchUpdateDate) ?>
                                         <?php } ?>
                                 </p>
                                 <?php if (empty($comment->status)) : ?>

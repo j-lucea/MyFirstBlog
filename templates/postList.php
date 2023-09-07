@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?php echo $title ?></h1>
+                    <h1><?= esc_attr($title) ?></h1>
                 </div>
             </div>
         </div>
@@ -23,9 +23,9 @@
                 <!-- Posts preview-->
                 <div class="post-preview">
                     <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
-                        <h2 class="post-title"><?= htmlspecialchars($post->title); ?></h2>
+                        <h2 class="post-title"><?= esc_attr($post->title); ?></h2>
                         <h3 class="post-subtitle">
-                            <?= nl2br(htmlspecialchars($post->chapo)); ?>
+                            <?= nl2br(esc_attr($post->chapo)); ?>
                         </h3>
                     </a>
                     <p class="post-meta">
