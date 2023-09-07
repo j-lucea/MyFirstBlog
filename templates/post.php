@@ -19,7 +19,7 @@
                                     <br><em>Mis à jour le <?= $post->frenchUpdateDate; ?></em>
                                 <?php } ?>
                             </span><br>
-                    <h3>Catégorie : <?= $post->category ?></h3>
+                    <h3>Catégorie : <?= $category->name ?></h3>
                 </div>
             </div>
         </div>

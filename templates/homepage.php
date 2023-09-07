@@ -27,8 +27,9 @@
                                 <h2 class="fw-light">Développeur Web</h2>
                                 <p>Je suis là pour concrétiser vos projets web</p>
                                 <a href="src/public/assets/img/cv.pdf"
+                                   target="_blank"
                                    class="btn btn-primary mt-5">
-                                    Mon parcours web
+                                    Mon parcours
                                 </a>
                             </div>
                             <div class="col-12 col-md-6">

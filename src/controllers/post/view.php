@@ -27,7 +27,7 @@ class ViewPost
 
         $categoryRepository = new CategoryRepository();
         $categoryRepository->connection = $connection;
-        $category = $categoryRepository->getCategoryName(htmlspecialchars($post->category));
+        $category = $categoryRepository->getCategory($post->category);
 
         require('templates/post.php');
     }

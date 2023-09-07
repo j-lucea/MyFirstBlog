@@ -36,12 +36,6 @@
                             <label for="chapo">Chapô</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="image"
-                                   name="image" type="file"
-                                   maxlength="500"/>
-                            <label for="image">Image</label>
-                        </div>
-                        <div class="form-floating">
                             <select class="form-select" name="category">
                                 <option value=0 selected>Choississez une catégorie
                                 </option>

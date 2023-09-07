@@ -24,17 +24,13 @@ class CategoryRepository
         }
         return $categories;
     }
-    public function getCategory(): array
+    public function getCategory(int $id): Category
     {
         $statement = $this->connection->getConnection()->prepare(
             "SELECT id, name FROM p5_category WHERE id = ?"
         );
-        $statement->execute();
-        $categories = [];
-        while (($row = $statement->fetch())) {
-            $category = new Category($row['id'], $row['name']);
-            $categories[] = $category;
-        }
-        return $categories;
+        $statement->execute([$id]);
+        $row = $statement->fetch();
+        return new Category($row['id'], $row['name']);
     }
 }

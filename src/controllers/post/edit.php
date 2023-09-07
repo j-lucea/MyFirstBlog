@@ -23,9 +23,7 @@ class EditPost
                 htmlspecialchars($_POST['title']),
                 htmlspecialchars($_POST['chapo']),
                 htmlspecialchars($_POST['content']),
-                htmlspecialchars($_POST['image']),
-                htmlspecialchars($_POST['category']),
-                htmlspecialchars($_SESSION['id'])
+                htmlspecialchars($_POST['category'])
             );
             header('Location: index.php?action=postAdmin');
         } else {

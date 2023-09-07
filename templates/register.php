@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="password"
-                                   name="password" type="text"
+                                   name="password" type="password"
                                    maxlength="255" required/>
                             <label for="password">Mot de passe</label>
                         </div>

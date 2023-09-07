@@ -9,19 +9,19 @@ class Register
 {
     public function execute(): void
     {
-        $image = '';
+        $image = 'uploads/default_image.jpg';
         if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['login'])
             && isset($_POST['password']) && isset($_POST['mail'])) {
-            // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
+            // Test if the file has been sent correctly and if there are no errors
             if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0) {
-                // Testons si le fichier n'est pas trop gros
+                // Test if the file is not too big
                 if ($_FILES['avatar']['size'] <= 1000000) {
-                    // Testons si l'extension est autorisée
+                    // Test if the extension is authorized
                     $fileInfo = pathinfo($_FILES['avatar']['name']);
                     $extension = $fileInfo['extension'];
                     $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
                     if (in_array($extension, $allowedExtensions)) {
-                        // On peut valider le fichier et le stocker définitivement
+                        // We can now accept the file
                         $image = 'uploads/' . basename($_FILES['avatar']['name']);
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $image);
                         $successMessage = "L'envoi a bien été effectué !";

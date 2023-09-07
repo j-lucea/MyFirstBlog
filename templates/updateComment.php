@@ -29,9 +29,8 @@
                         <div class="form-floating">
                             <textarea class="form-control" id="content"
                                       name="content"
-                                      style="height: 12rem" required>
-                                <?= htmlspecialchars($comment->content) ?>
-                            </textarea>
+                                      style="height: 12rem"
+                                      required><?= htmlspecialchars($comment->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
