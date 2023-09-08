@@ -28,14 +28,14 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?= esc_attr($post->title) ?>"
+                                   value="<?= htmlentities($post->title) ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?= esc_attr($post->chapo) ?>"
+                                   value="<?= htmlentities($post->chapo) ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -50,13 +50,13 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= esc_attr($category->id) ?>
+                                <option value=<?= htmlentities($category->id) ?>
                                     <?php if ($category->id == $post->category) { ?>
                                         selected>
                                     <?php } else { ?>
                                         >
                                     <?php } ?>
-                                    <?= esc_attr($category->name) ?>
+                                    <?= htmlentities($category->name) ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -66,7 +66,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= esc_attr($post->content) ?></textarea>
+                                      required><?= htmlentities($post->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
