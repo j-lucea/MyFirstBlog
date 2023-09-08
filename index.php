@@ -2,6 +2,8 @@
 
 session_start();
 
+/*require __DIR__ . '/vendor/autoload.php';*/
+
 require_once 'src/controllers/comment/add.php';
 require_once 'src/controllers/comment/activate.php';
 require_once 'src/controllers/comment/update.php';
@@ -38,23 +40,26 @@ use Application\Controllers\User\Register\Register;
 use Application\Controllers\User\Admin\UserAdmin;
 use Application\Controllers\User\Delete\DeleteUser;
 
+/*$action = htmlspecialchars($_GET['action']);*/
+$action = '';
+
 try {
-    if (isset($_GET['action']) && $_GET['action'] !== '') {
-        if ($_GET['action'] === 'login' && empty($_SESSION)) {
+    if (isset($action) && $action !== '') {
+        if ($action === 'login' && empty($_SESSION)) {
             (new Login())->execute();
-        } elseif ($_GET['action'] === 'logout') {
+        } elseif ($action === 'logout') {
             session_destroy();
             header('Location: index.php?action=login');
-        } elseif ($_GET['action'] === 'register') {
+        } elseif ($action === 'register') {
             (new Register())->execute();
-        } elseif ($_GET['action'] === 'post') {
+        } elseif ($action === 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
                 (new ViewPost())->execute($identifier);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($_GET['action'] === 'addComment') {
+        } elseif ($action === 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($_SESSION['id'])
                 && !empty($_POST['comment'])) {
                 $identifier = $_GET['id'];
@@ -64,7 +69,7 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($_GET['action'] === 'updateComment' && !empty($_SESSION['id'])) {
+        } elseif ($action === 'updateComment' && !empty($_SESSION['id'])) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
                 // It sets the input only when the HTTP method is POST
@@ -77,27 +82,27 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        } elseif ($_GET['action'] === 'deleteComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'deleteComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new DeleteComment())->execute();
-        } elseif ($_GET['action'] === 'activateComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'activateComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new ActivateComment())->execute();
-        } elseif ($_GET['action'] === 'commentAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'commentAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new CommentAdmin())->execute();
-        } elseif ($_GET['action'] === 'postList') {
+        } elseif ($action === 'postList') {
             (new PostList())->execute();
-        } elseif ($_GET['action'] === 'postAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'postAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new PostAdmin())->execute();
-        } elseif ($_GET['action'] === 'addPost' && !empty($_SESSION['id'])) {
+        } elseif ($action === 'addPost' && !empty($_SESSION['id'])) {
             (new AddPost())->execute();
-        } elseif ($_GET['action'] === 'editPost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'editPost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new EditPost())->execute();
-        } elseif ($_GET['action'] === 'deletePost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'deletePost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new DeletePost())->execute();
-        } elseif ($_GET['action'] === 'userAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'userAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new UserAdmin())->execute();
-        } elseif ($_GET['action'] === 'deleteUser' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'deleteUser' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
             (new DeleteUser())->execute();
-        } elseif ($_GET['action'] === 'contact') {
+        } elseif ($action === 'contact') {
             (new Contact())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");

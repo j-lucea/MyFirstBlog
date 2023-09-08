@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?= esc_attr($title) ?></h1>
+                    <h1><?= htmlentities($title) ?></h1>
                 </div>
             </div>
         </div>
@@ -23,19 +23,19 @@
                 <!-- Posts preview-->
                 <div class="post-preview">
                     <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
-                        <h2 class="post-title"><?= esc_attr($post->title) ?></h2>
+                        <h2 class="post-title"><?= htmlentities($post->title) ?></h2>
                         <h3 class="post-subtitle">
-                            <?= esc_attr($post->chapo) ?>
+                            <?= htmlentities($post->chapo) ?>
                         </h3>
                     </a>
                     <p class="post-meta">
                         Publié par
-                        <em><?= esc_attr($post->author) ?></em>
+                        <em><?= htmlentities($post->author) ?></em>
                         <?php
                         if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                            <em>le <?= esc_attr($post->frenchCreationDate) ?></em>
+                            <em>le <?= htmlentities($post->frenchCreationDate) ?></em>
                         <?php } else { ?>
-                            <br><em>Mis à jour le <?= esc_attr($post->frenchUpdateDate) ?></em>
+                            <br><em>Mis à jour le <?= htmlentities($post->frenchUpdateDate) ?></em>
                         <?php } ?>
                     </p>
                 </div>

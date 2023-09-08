@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading"><?= esc_attr($title) ?></span>
+                    <span class="subheading"><?= htmlentities($title) ?></span>
                 </div>
             </div>
         </div>
@@ -42,8 +42,8 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= esc_attr($category->id) ?>>
-                                    <?= esc_attr($category->name) ?>
+                                <option value=<?= htmlentities($category->id) ?>>
+                                    <?= htmlentities($category->name) ?>
                                 </option>
                                     <?php
                                 }
