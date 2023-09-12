@@ -41,7 +41,11 @@ use Application\Controllers\User\Admin\UserAdmin;
 use Application\Controllers\User\Delete\DeleteUser;
 
 /*$action = htmlspecialchars($_GET['action']);*/
-$action = '';
+if (isset($_GET['action'])) {
+    $action = htmlspecialchars($_GET['action']);
+} else {
+    $action = '';
+}
 
 try {
     if (isset($action) && $action !== '') {
