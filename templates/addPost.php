@@ -36,7 +36,7 @@
                             <label for="chapo">Chapô</label>
                         </div>
                         <div class="form-floating">
-                            <select class="form-select" name="category">
+                            <select class="form-select" name="category" required>
                                 <option value=0 selected>Choississez une catégorie
                                 </option>
                                 <?php

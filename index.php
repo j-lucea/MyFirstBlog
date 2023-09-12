@@ -41,11 +41,23 @@ use Application\Controllers\User\Admin\UserAdmin;
 use Application\Controllers\User\Delete\DeleteUser;
 
 /*$action = htmlspecialchars($_GET['action']);*/
-$action = '';
+if (isset($_GET['action'])) {
+    $action = htmlspecialchars($_GET['action']);
+} else {
+    $action = '';
+}
+
+if (!empty($_SESSION) && !empty($_SESSION['id'])) {
+    $sessionId = htmlspecialchars($_SESSION['id']);
+    $sessionRole = htmlspecialchars($_SESSION['role']);
+} else {
+    $sessionId = '';
+    $sessionRole = '';
+}
 
 try {
-    if (isset($action) && $action !== '') {
-        if ($action === 'login' && empty($_SESSION)) {
+    if ($action !== '') {
+        if ($action === 'login' && empty($sessionId)) {
             (new Login())->execute();
         } elseif ($action === 'logout') {
             session_destroy();
@@ -60,16 +72,16 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         } elseif ($action === 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($_SESSION['id'])
+            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($sessionId)
                 && !empty($_POST['comment'])) {
                 $identifier = $_GET['id'];
-                $author = $_SESSION['id'];
+                $author = $sessionId;
                 $comment = $_POST['comment'];
                 (new AddComment())->execute($identifier, $author, $comment);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($action === 'updateComment' && !empty($_SESSION['id'])) {
+        } elseif ($action === 'updateComment' && !empty($sessionId)) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
                 // It sets the input only when the HTTP method is POST
@@ -82,25 +94,25 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        } elseif ($action === 'deleteComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'deleteComment' && !empty($sessionId) && $sessionRole==1) {
             (new DeleteComment())->execute();
-        } elseif ($action === 'activateComment' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'activateComment' && !empty($sessionId) && $sessionRole==1) {
             (new ActivateComment())->execute();
-        } elseif ($action === 'commentAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'commentAdmin' && !empty($sessionId) && $sessionRole==1) {
             (new CommentAdmin())->execute();
         } elseif ($action === 'postList') {
             (new PostList())->execute();
-        } elseif ($action === 'postAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'postAdmin' && !empty($sessionId) && $sessionRole==1) {
             (new PostAdmin())->execute();
-        } elseif ($action === 'addPost' && !empty($_SESSION['id'])) {
+        } elseif ($action === 'addPost' && !empty($sessionId)) {
             (new AddPost())->execute();
-        } elseif ($action === 'editPost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'editPost' && !empty($sessionId) && $sessionRole==1) {
             (new EditPost())->execute();
-        } elseif ($action === 'deletePost' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'deletePost' && !empty($sessionId) && $sessionRole==1) {
             (new DeletePost())->execute();
-        } elseif ($action === 'userAdmin' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'userAdmin' && !empty($sessionId) && $sessionRole==1) {
             (new UserAdmin())->execute();
-        } elseif ($action === 'deleteUser' && !empty($_SESSION['id']) && $_SESSION['role']==1) {
+        } elseif ($action === 'deleteUser' && !empty($sessionId) && $sessionRole==1) {
             (new DeleteUser())->execute();
         } elseif ($action === 'contact') {
             (new Contact())->execute();
