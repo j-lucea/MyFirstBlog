@@ -40,90 +40,91 @@ use Application\Controllers\User\Register\Register;
 use Application\Controllers\User\Admin\UserAdmin;
 use Application\Controllers\User\Delete\DeleteUser;
 
-/*$action = htmlspecialchars($_GET['action']);*/
-if (isset($_GET['action'])) {
-    $action = htmlspecialchars($_GET['action']);
+/*$get['action'] = htmlspecialchars($_GET['action']);*/
+if (isset($_GET)) {
+    $get = $_GET;
 } else {
-    $action = '';
+    $get = '';
 }
 
-if (!empty($_SESSION) && !empty($_SESSION['id'])) {
-    $sessionId = htmlspecialchars($_SESSION['id']);
-    $sessionRole = htmlspecialchars($_SESSION['role']);
+if (isset($post)) {
+    $post = $_POST;
 } else {
-    $sessionId = '';
-    $sessionRole = '';
+    $post = '';
+}
+
+if (!empty($_SESSION)) {
+    $session = $_SESSION;
+} else {
+    $session = '';
 }
 
 try {
-    if ($action !== '') {
-        if ($action === 'login' && empty($sessionId)) {
+    if ($get['action'] !== '') {
+        if ($get['action'] === 'login' && empty($session['id'])) {
             (new Login())->execute();
-        } elseif ($action === 'logout') {
+        } elseif ($get['action'] === 'logout') {
             session_destroy();
             header('Location: index.php?action=login');
-        } elseif ($action === 'register') {
+        } elseif ($get['action'] === 'register') {
             (new Register())->execute();
-        } elseif ($action === 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
-                (new ViewPost())->execute($identifier);
+        } elseif ($get['action'] === 'post') {
+            if (isset($get['id']) && $get['id'] > 0) {
+                (new ViewPost())->execute(htmlspecialchars($get['id']));
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($action === 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && !empty($sessionId)
-                && !empty($_POST['comment'])) {
-                $identifier = $_GET['id'];
-                $author = $sessionId;
-                $comment = $_POST['comment'];
-                (new AddComment())->execute($identifier, $author, $comment);
+        } elseif ($get['action'] === 'addComment') {
+            if (isset($get['id']) && $get['id'] > 0 && !empty($session['id'])
+                && !empty($post['comment'])) {
+                (new AddComment())->execute(htmlspecialchars($get['id']),
+                    htmlspecialchars($session['id']), htmlspecialchars($post['comment']));
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($action === 'updateComment' && !empty($sessionId)) {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $identifier = $_GET['id'];
+        } elseif ($get['action'] === 'updateComment' && !empty($session['id'])) {
+            if (isset($get['id']) && $get['id'] > 0) {
+                $identifier = $get['id'];
                 // It sets the input only when the HTTP method is POST
                 // (ie. the form is submitted).
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $input = $_POST;
+                    $input = $post;
                 }
                 (new UpdateComment())->execute($identifier, $input);
             } else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
-        } elseif ($action === 'deleteComment' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'deleteComment' && !empty($session['id']) && $session['role']==1) {
             (new DeleteComment())->execute();
-        } elseif ($action === 'activateComment' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'activateComment' && !empty($session['id']) && $session['role']==1) {
             (new ActivateComment())->execute();
-        } elseif ($action === 'commentAdmin' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'commentAdmin' && !empty($session['id']) && $session['role']==1) {
             (new CommentAdmin())->execute();
-        } elseif ($action === 'postList') {
+        } elseif ($get['action'] === 'postList') {
             (new PostList())->execute();
-        } elseif ($action === 'postAdmin' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'postAdmin' && !empty($session['id']) && $session['role']==1) {
             (new PostAdmin())->execute();
-        } elseif ($action === 'addPost' && !empty($sessionId)) {
+        } elseif ($get['action'] === 'addPost' && !empty($session['id'])) {
             (new AddPost())->execute();
-        } elseif ($action === 'editPost' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'editPost' && !empty($session['id']) && $session['role']==1) {
             (new EditPost())->execute();
-        } elseif ($action === 'deletePost' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'deletePost' && !empty($session['id']) && $session['role']==1) {
             (new DeletePost())->execute();
-        } elseif ($action === 'userAdmin' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'userAdmin' && !empty($session['id']) && $session['role']==1) {
             (new UserAdmin())->execute();
-        } elseif ($action === 'deleteUser' && !empty($sessionId) && $sessionRole==1) {
+        } elseif ($get['action'] === 'deleteUser' && !empty($session['id']) && $session['role']==1) {
             (new DeleteUser())->execute();
-        } elseif ($action === 'contact') {
+        } elseif ($get['action'] === 'contact') {
             (new Contact())->execute();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
     } else {
-        if (isset($_POST['mail']) && isset($_POST['password'])) {
+        if (isset($post['mail']) && isset($post['password'])) {
             foreach ($users as $user) {
-                if ($user['mail'] === $_POST['mail'] &&
-                    $user['password'] === $_POST['password']
+                if ($user['mail'] === $post['mail'] &&
+                    $user['password'] === $post['password']
                 ) {
                     $loggedUser = [
                         'email' => $user['mail'],
@@ -132,8 +133,8 @@ try {
                     $errorMessage = sprintf(
                         'Les informations envoyées 
                     ne permettent pas de vous identifier : (%s/%s)',
-                        $_POST['mail'],
-                        $_POST['password']
+                        $post['mail'],
+                        $post['password']
                     );
                 }
             }
