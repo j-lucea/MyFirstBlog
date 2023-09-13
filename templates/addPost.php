@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading"><?= htmlspecialchars($title, ENT_QUOTES) ?></span>
+                    <span class="subheading"><?= $title ?></span>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                                 foreach ($categories as $category) {
                                     ?>
                                 <option value=<?= urlencode($category->id) ?>>
-                                    <?= htmlspecialchars($category->name, ENT_QUOTES) ?>
+                                    <?= $category->name ?>
                                 </option>
                                     <?php
                                 }
