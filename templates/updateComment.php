@@ -30,15 +30,15 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= strip_tags($comment->content) ?></textarea>
+                                      required><?= addslashes(string: $comment->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
                         <input type="hidden" id="postId" name="postId"
-                               value="<?= strip_tags($comment->post) ?>" />
+                               value="<?= addslashes(string: $comment->post) ?>" />
                         <!-- Return link -->
                         <a class="btn btn-primary text-uppercase"
-                           href="index.php?action=post&id=<?= strip_tags($comment->post) ?>">
+                           href="index.php?action=post&id=<?= urlencode($comment->post) ?>">
                             Retour</a>
                         <!-- Submit Button-->
                         <button class="btn btn-success text-uppercase"

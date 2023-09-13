@@ -28,14 +28,14 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?= strip_tags($post->title) ?>"
+                                   value="<?= addslashes(string: $post->title) ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?= strip_tags($post->chapo) ?>"
+                                   value="<?= addslashes(string: $post->chapo) ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -50,13 +50,13 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= strip_tags($category->id) ?>
+                                <option value=<?= urlencode($category->id) ?>
                                     <?php if ($category->id == $post->category) { ?>
                                         selected>
                                     <?php } else { ?>
                                         >
                                     <?php } ?>
-                                    <?= strip_tags($category->name) ?>
+                                    <?= addslashes(string: $category->name) ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -66,7 +66,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= strip_tags($post->content) ?></textarea>
+                                      required><?= addslashes(string: $post->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />

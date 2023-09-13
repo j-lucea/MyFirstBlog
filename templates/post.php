@@ -3,23 +3,23 @@
 <?php ob_start(); ?>
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url(<?= strip_tags($post->image) ?>)">
+<header class="masthead" style="background-image: url(<?= addslashes($post->image) ?>)">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1><?= strip_tags($post->title) ?></h1>
-                    <h2 class="subheading"><?= strip_tags($post->chapo) ?></h2>
+                    <h1><?= addslashes(string: $post->title) ?></h1>
+                    <h2 class="subheading"><?= addslashes(string: $post->chapo) ?></h2>
                     <span class="meta">
-                                Publié par <?= strip_tags($post->author) ?>
+                                Publié par <?= addslashes(string: $post->author) ?>
                                 <?php
                                 if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                    <em>le <?= strip_tags($post->frenchCreationDate) ?></em>
+                                    <em>le <?= addslashes(string: $post->frenchCreationDate) ?></em>
                                 <?php } else { ?>
-                                    <br><em>Mis à jour le <?= strip_tags($post->frenchUpdateDate) ?></em>
+                                    <br><em>Mis à jour le <?= addslashes(string: $post->frenchUpdateDate) ?></em>
                                 <?php } ?>
                             </span><br>
-                    <h3>Catégorie : <?= strip_tags($category->name) ?></h3>
+                    <h3>Catégorie : <?= addslashes($category->name) ?></h3>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
     <article class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p><?= strip_tags($post->content) ?></p>
+                <p><?= addslashes(string: $post->content) ?></p>
                 <?php
                 if ($comments) {
                     ?>
@@ -38,15 +38,15 @@
                     <?php
                     foreach ($comments as $comment) {
                         ?>
-                            <p><strong><?= strip_tags($comment->author) ?></strong>
-                                le <?= strip_tags($comment->frenchCreationDate) ?>
+                            <p><strong><?= addslashes(string: $comment->author) ?></strong>
+                                le <?= addslashes(string: $comment->frenchCreationDate) ?>
                             <?php if (!empty($_SESSION) && $comment->author == $_SESSION['firstName']) {
                                 ?>(<a
                                         href="index.php?action=updateComment&id=<?=
                                         urlencode($comment->id) ?>">Modifier</a>)
                             <?php } ?>
                             </p>
-                            <p><?= strip_tags($comment->content) ?></p>
+                            <p><?= addslashes(string: $comment->content) ?></p>
                             <?php
                     }
                 }
