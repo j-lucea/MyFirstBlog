@@ -43,7 +43,7 @@
                                 foreach ($categories as $category) {
                                     ?>
                                 <option value=<?= urlencode($category->id) ?>>
-                                    <?php echo $category->name; ?>
+                                    <?php $category->name; ?>
                                 </option>
                                     <?php
                                 }

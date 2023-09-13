@@ -27,15 +27,15 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($comment->author, ENT_QUOTES) ?></h5>
-                                <p class="card-text"><?= htmlspecialchars($comment->content, ENT_QUOTES) ?></p>
+                                <h5 class="card-title"><?php htmlspecialchars($comment->author); ?></h5>
+                                <p class="card-text"><?php htmlspecialchars($comment->content); ?></p>
                                 <p class="card-text">Publié par
-                                    <em><?= htmlspecialchars($comment->author, ENT_QUOTES) ?><br>
+                                    <em><?php htmlspecialchars($comment->author); ?><br>
                                         <?php
                                         if ($comment->frenchCreationDate == $comment->frenchUpdateDate) { ?>
-                                            le <?= htmlspecialchars($comment->frenchCreationDate, ENT_QUOTES) ?>
+                                            le <?php htmlspecialchars($comment->frenchCreationDate); ?>
                                         <?php } else { ?>
-                                            Modifié le <?= htmlspecialchars($comment->frenchUpdateDate, ENT_QUOTES) ?>
+                                            Modifié le <?php htmlspecialchars($comment->frenchUpdateDate); ?>
                                         <?php } ?>
                                 </p>
                                 <?php if (empty($comment->status)) : ?>
