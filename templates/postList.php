@@ -49,4 +49,4 @@
 </main>
 <?php $content = ob_get_clean(); ?>
 
-<?= require 'layout.php' ?>
+<?php require 'layout.php'; ?>
