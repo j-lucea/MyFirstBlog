@@ -41,9 +41,9 @@ use Application\Controllers\User\Admin\UserAdmin;
 use Application\Controllers\User\Delete\DeleteUser;
 
 /*$get['action'] = htmlspecialchars($_GET['action']);*/
-$get = $_GET ?? '';
+$get = filter_input_array(INPUT_GET) ?? '';
 
-$post = $_POST ?? '';
+$post = filter_input_array(INPUT_POST) ?? '';
 
 $session = $_SESSION ?? '';
 
