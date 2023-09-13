@@ -22,7 +22,7 @@
                 <div class="alert alert-success" role="alert">
                     <?php $successMessage; ?>
                 </div>
-                    <?= header("refresh:2;url=index.php") ?>
+                    <?php header("refresh:2;url=index.php"); ?>
                 <?php } else { ?>
                 <!-- If error, we show it -->
                     <?php if (isset($errorMessage)) : ?>

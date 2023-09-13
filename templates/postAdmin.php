@@ -32,8 +32,8 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title"><?= htmlspecialchars($post->title, ENT_QUOTES) ?></h5>
-                        <p class="card-text">Publié par <em><?= htmlspecialchars($post->author, ENT_QUOTES) ?>
+                        <h5 class="card-title"><?php $post->title; ?></h5>
+                        <p class="card-text">Publié par <em><?php $post->author; ?>
                             <?php
                             if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
                                 le <?php $post->frenchCreationDate; ?>

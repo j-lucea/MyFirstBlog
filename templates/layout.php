@@ -74,7 +74,7 @@
         </div>
     </div>
 </nav>
-<?= $content ?>
+<?php $content; ?>
 <!-- Footer-->
 <footer class="border-top">
     <div class="container px-4 px-lg-5">
