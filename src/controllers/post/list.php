@@ -14,6 +14,6 @@ class PostList
         $postRepository->connection = new DatabaseConnection();
         $posts = $postRepository->getPosts();
 
-        require('templates/postList.php');
+        require 'templates/postList.php';
     }
 }

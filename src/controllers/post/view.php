@@ -7,9 +7,9 @@ use Application\Repository\CategoryRepository\CategoryRepository;
 use Application\Repository\CommentRepository\CommentRepository;
 use Application\Repository\PostRepository\PostRepository;
 
-require_once 'src/lib/database.php';
+/*require_once 'src/lib/database.php';
 require_once 'src/repository/postRepository.php';
-require_once 'src/repository/commentRepository.php';
+require_once 'src/repository/commentRepository.php';*/
 
 class ViewPost
 {
@@ -29,6 +29,6 @@ class ViewPost
         $categoryRepository->connection = $connection;
         $category = $categoryRepository->getCategory($post->category);
 
-        require('templates/post.php');
+        require 'templates/post.php';
     }
 }

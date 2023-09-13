@@ -49,6 +49,6 @@ class Register
                 $errorMessage = "Votre création de compte a échoué ! Veuillez recommencer.";
             }
         }
-        require('templates/register.php');
+        require 'templates/register.php';
     }
 }

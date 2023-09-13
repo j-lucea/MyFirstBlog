@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php htmlentities($title) ?></span>
+                    <span class="subheading"><?= strip_tags($title) ?></span>
                 </div>
             </div>
         </div>
@@ -27,14 +27,14 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlentities($comment->author) ?></h5>
-                                <p class="card-text"><?= htmlentities($comment->content) ?></p>
-                                <p class="card-text">Publié par <em><?= htmlentities($comment->author) ?><br>
+                                <h5 class="card-title"><?= strip_tags($comment->author) ?></h5>
+                                <p class="card-text"><?= strip_tags($comment->content) ?></p>
+                                <p class="card-text">Publié par <em><?= strip_tags($comment->author) ?><br>
                                         <?php
                                         if ($comment->frenchCreationDate == $comment->frenchUpdateDate) { ?>
-                                            le <?= htmlentities($comment->frenchCreationDate) ?>
+                                            le <?= strip_tags($comment->frenchCreationDate) ?>
                                         <?php } else { ?>
-                                            Modifié le <?= htmlentities($comment->frenchUpdateDate) ?>
+                                            Modifié le <?= strip_tags($comment->frenchUpdateDate) ?>
                                         <?php } ?>
                                 </p>
                                 <?php if (empty($comment->status)) : ?>
@@ -60,4 +60,4 @@
 </main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php') ?>
+<?= require 'layout.php' ?>

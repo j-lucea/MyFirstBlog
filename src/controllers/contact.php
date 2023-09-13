@@ -3,6 +3,7 @@
 namespace Application\Controllers\Contact;
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require_once 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -48,6 +49,6 @@ class Contact
                 header('Location: index.php');
             }
         }
-        require('templates/contact.php');
+        require 'templates/contact.php';
     }
 }

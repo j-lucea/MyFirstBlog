@@ -27,7 +27,7 @@ class AddPost
             $categoryRepository->connection = new DatabaseConnection();
             $categories = $categoryRepository->getCategories();
 
-            require('templates/addPost.php');
+            require 'templates/addPost.php';
         }
     }
 }
