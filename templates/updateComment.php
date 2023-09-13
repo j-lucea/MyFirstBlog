@@ -30,12 +30,12 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= htmlspecialchars($comment->content, ENT_QUOTES) ?></textarea>
+                                      required><?php $comment->content; ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
                         <input type="hidden" id="postId" name="postId"
-                               value="<?= htmlspecialchars($comment->post, ENT_QUOTES) ?>" />
+                               value="<?= urlencode($comment->post) ?>" />
                         <!-- Return link -->
                         <a class="btn btn-primary text-uppercase"
                            href="index.php?action=post&id=<?= urlencode($comment->post) ?>">

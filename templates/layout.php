@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title><?= htmlspecialchars($title, ENT_QUOTES) ?></title>
+    <title><?php $title; ?></title>
     <link rel="icon" type="image/x-icon" href="src/public/assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -57,7 +57,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4"
                            href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false"><?= htmlspecialchars($_SESSION['firstName'], ENT_QUOTES) ?>
+                           aria-expanded="false"><?php $_SESSION['firstName']; ?>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?action=logout">Déconnexion</a></li>

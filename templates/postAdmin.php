@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?= htmlspecialchars($title, ENT_QUOTES) ?></span>
+                    <span class="subheading"><?php $title; ?></span>
                 </div>
             </div>
         </div>
@@ -36,9 +36,9 @@
                         <p class="card-text">Publié par <em><?= htmlspecialchars($post->author, ENT_QUOTES) ?>
                             <?php
                             if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                le <?= htmlspecialchars($post->frenchCreationDate, ENT_QUOTES) ?>
+                                le <?php $post->frenchCreationDate; ?>
                             <?php } else { ?>
-                                <br>Mis à jour le <?= htmlspecialchars($post->frenchUpdateDate, ENT_QUOTES) ?>
+                                <br>Mis à jour le <?php $post->frenchUpdateDate; ?>
                             <?php } ?>
                         </p>
                         <a href="index.php?action=post&id=<?= urlencode($post->id) ?>"
