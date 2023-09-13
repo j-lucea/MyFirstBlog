@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?= htmlspecialchars($title, ENT_QUOTES) ?></h1>
+                    <h1><?php $title; ?></h1>
                 </div>
             </div>
         </div>
@@ -20,14 +20,14 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <?php if (isset($successMessage)) { ?>
                 <div class="alert alert-success" role="alert">
-                    <?= htmlspecialchars($successMessage, ENT_QUOTES) ?>
+                    <?php $successMessage; ?>
                 </div>
                     <?= header("refresh:2;url=index.php") ?>
                 <?php } else { ?>
                 <!-- If error, we show it -->
                     <?php if (isset($errorMessage)) : ?>
                     <div class="alert alert-danger" role="alert">
-                        <?= htmlspecialchars($errorMessage, ENT_QUOTES) ?>
+                        <?php $errorMessage; ?>
                     </div>
                     <?php endif; ?>
                 <div class="my-5">

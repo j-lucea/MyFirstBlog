@@ -8,18 +8,18 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1><?= htmlspecialchars($post->title, ENT_QUOTES) ?></h1>
-                    <h2 class="subheading"><?= htmlspecialchars($post->chapo, ENT_QUOTES) ?></h2>
+                    <h1><?php $post->title; ?></h1>
+                    <h2 class="subheading"><?php $post->chapo; ?></h2>
                     <span class="meta">
-                                Publié par <?= htmlspecialchars($post->author, ENT_QUOTES) ?>
+                                Publié par <?php $post->author; ?>
                                 <?php
                                 if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                    <em>le <?= htmlspecialchars($post->frenchCreationDate, ENT_QUOTES) ?></em>
+                                    <em>le <?php $post->frenchCreationDate; ?></em>
                                 <?php } else { ?>
-                                    <br><em>Mis à jour le <?= htmlspecialchars($post->frenchUpdateDate, ENT_QUOTES) ?></em>
+                                    <br><em>Mis à jour le <?php $post->frenchUpdateDate; ?></em>
                                 <?php } ?>
                             </span><br>
-                    <h3>Catégorie : <?= htmlspecialchars($category->name, ENT_QUOTES) ?></h3>
+                    <h3>Catégorie : <?php $category->name; ?></h3>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
     <article class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p><?= htmlspecialchars($post->content, ENT_QUOTES) ?></p>
+                <p><?php $post->content; ?></p>
                 <?php
                 if ($comments) {
                     ?>
@@ -38,15 +38,15 @@
                     <?php
                     foreach ($comments as $comment) {
                         ?>
-                            <p><strong><?= htmlspecialchars($comment->author, ENT_QUOTES) ?></strong>
-                                le <?= htmlspecialchars($comment->frenchCreationDate, ENT_QUOTES) ?>
+                            <p><strong><?php $comment->author; ?></strong>
+                                le <?php $comment->frenchCreationDate; ?>
                             <?php if (!empty($_SESSION) && $comment->author == $_SESSION['firstName']) {
                                 ?>(<a
                                         href="index.php?action=updateComment&id=<?=
                                         urlencode($comment->id) ?>">Modifier</a>)
                             <?php } ?>
                             </p>
-                            <p><?= htmlspecialchars($comment->content, ENT_QUOTES) ?></p>
+                            <p><?php $comment->content; ?></p>
                             <?php
                     }
                 }

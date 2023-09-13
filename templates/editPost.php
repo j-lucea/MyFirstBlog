@@ -28,14 +28,14 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?= htmlspecialchars($post->title, ENT_QUOTES) ?>"
+                                   value="<?php $post->title; ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?= htmlspecialchars($post->chapo, ENT_QUOTES) ?>"
+                                   value="<?php $post->chapo; ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -56,7 +56,7 @@
                                     <?php } else { ?>
                                         >
                                     <?php } ?>
-                                    <?= htmlspecialchars($category->name, ENT_QUOTES) ?>
+                                    <?php $category->name; ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -66,7 +66,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= htmlspecialchars($post->content, ENT_QUOTES) ?></textarea>
+                                      required><?php $post->content; ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
