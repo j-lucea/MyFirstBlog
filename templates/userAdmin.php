@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?= strip_tags($title) ?></span>
+                    <span class="subheading"><?= addslashes($title) ?></span>
                 </div>
             </div>
         </div>
@@ -27,24 +27,24 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= strip_tags($user->firstName) ?>
-                                <?= strip_tags($user->lastName) ?></h5>
+                                <h5 class="card-title"><?= addslashes($user->firstName) ?>
+                                <?= addslashes($user->lastName) ?></h5>
                                 <div class="p-3 border bg-light">
-                                    <img src="<?= strip_tags($user->avatar) ?>" class="img-thumbnail"
-                                         alt="Avatar de <?= strip_tags($user->firstName) ?>">
+                                    <img src="<?= addslashes($user->avatar) ?>" class="img-thumbnail"
+                                         alt="Avatar de <?= addslashes($user->firstName) ?>">
                                 </div>
                                         <p class="card-text">Identifiant :
-                                            <em><?= strip_tags($user->login); ?><br>
-                                        Adresse mail : <em><?= strip_tags($user->mail) ?><br>
+                                            <em><?= addslashes($user->login); ?><br>
+                                        Adresse mail : <em><?= addslashes($user->mail) ?><br>
                                         Rôle : <em><?php if ($user->role) {
                                             ?>Administrateur
                                                    <?php } else {
                                                         ?>Utilisateur<?php
                                                    } ?><br>
-                                        Date de création :  le <?= strip_tags($user->frenchCreationDate) ?>
+                                        Date de création :  le <?= addslashes($user->frenchCreationDate) ?>
                                     <?php
                                     if ($user->frenchCreationDate != $user->frenchUpdateDate) { ?>
-                                            Dernière modification :  le <?= strip_tags($user->frenchUpdateDate) ?>
+                                            Dernière modification :  le <?= addslashes($user->frenchUpdateDate) ?>
                                     <?php } ?>
                                 </p>
                                 <a href="index.php?action=deleteUser&id=<?= urlencode($user->id) ?>"

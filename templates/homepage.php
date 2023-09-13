@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?= strip_tags($title) ?></h1>
+                    <h1><?= addslashes(string: $title) ?></h1>
                 </div>
             </div>
         </div>
@@ -48,13 +48,13 @@
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
-                            <h2 class="post-title"><?= strip_tags($post->title) ?></h2>
-                            <h3 class="post-subtitle"><?= strip_tags($post->chapo) ?></h3>
+                            <h2 class="post-title"><?= addslashes(string: $post->title) ?></h2>
+                            <h3 class="post-subtitle"><?= addslashes(string: $post->chapo) ?></h3>
                         </a>
                         <p class="post-meta">
                             Publié par
-                            <em><?= strip_tags($post->author) ?></em>
-                            <em>le <?= strip_tags($post->frenchCreationDate) ?></em>
+                            <em><?= addslashes(string: $post->author) ?></em>
+                            <em>le <?= addslashes(string: $post->frenchCreationDate) ?></em>
                         </p>
                     </div>
                     <!-- Divider-->

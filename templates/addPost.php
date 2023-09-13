@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading"><?= strip_tags($title) ?></span>
+                    <span class="subheading"><?= addslashes(string: $title) ?></span>
                 </div>
             </div>
         </div>
@@ -42,8 +42,8 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= strip_tags($category->id) ?>>
-                                    <?= strip_tags($category->name) ?>
+                                <option value=<?= urlencode($category->id) ?>>
+                                    <?= addslashes(string: $category->name) ?>
                                 </option>
                                     <?php
                                 }

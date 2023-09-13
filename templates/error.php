@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?= strip_tags($title) ?></h1>
+                    <h1><?= addslashes(string: $title) ?></h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
 <main class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <p>Une erreur est survenue : <?= strip_tags($errorMessage) ?></p>
+            <p>Une erreur est survenue : <?= addslashes(string: $errorMessage) ?></p>
         </div>
     </div>
 </main>
