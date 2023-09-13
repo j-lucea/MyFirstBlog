@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1><?= addslashes(string: $title) ?></h1>
+                    <h1><?= htmlspecialchars($title, ENT_QUOTES) ?></h1>
                     <span class="subheading">Des questions ?
                         J'ai les réponses.
                     </span>

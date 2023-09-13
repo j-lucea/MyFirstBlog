@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?= addslashes(string: $title) ?></span>
+                    <span class="subheading"><?= htmlspecialchars(string: $title) ?></span>
                 </div>
             </div>
         </div>
@@ -27,14 +27,14 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?= addslashes(string: $comment->author) ?></h5>
-                                <p class="card-text"><?= addslashes(string: $comment->content) ?></p>
-                                <p class="card-text">Publié par <em><?= addslashes(string: $comment->author) ?><br>
+                                <h5 class="card-title"><?= htmlspecialchars($comment->author, ENT_QUOTES) ?></h5>
+                                <p class="card-text"><?= htmlspecialchars($comment->content, ENT_QUOTES) ?></p>
+                                <p class="card-text">Publié par <em><?= htmlspecialchars($comment->author, ENT_QUOTES) ?><br>
                                         <?php
                                         if ($comment->frenchCreationDate == $comment->frenchUpdateDate) { ?>
-                                            le <?= addslashes(string: $comment->frenchCreationDate) ?>
+                                            le <?= htmlspecialchars($comment->frenchCreationDate, ENT_QUOTES) ?>
                                         <?php } else { ?>
-                                            Modifié le <?= addslashes(string: $comment->frenchUpdateDate) ?>
+                                            Modifié le <?= htmlspecialchars($comment->frenchUpdateDate, ENT_QUOTES) ?>
                                         <?php } ?>
                                 </p>
                                 <?php if (empty($comment->status)) : ?>

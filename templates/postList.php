@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?= addslashes(string: $title) ?></h1>
+                    <h1><?= htmlspecialchars($title, ENT_QUOTES) ?></h1>
                 </div>
             </div>
         </div>
@@ -23,19 +23,19 @@
                 <!-- Posts preview-->
                 <div class="post-preview">
                     <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
-                        <h2 class="post-title"><?= addslashes(string: $post->title) ?></h2>
+                        <h2 class="post-title"><?= htmlspecialchars($post->title, ENT_QUOTES) ?></h2>
                         <h3 class="post-subtitle">
-                            <?= addslashes(string: $post->chapo) ?>
+                            <?= htmlspecialchars($post->chapo, ENT_QUOTES) ?>
                         </h3>
                     </a>
                     <p class="post-meta">
                         Publié par
-                        <em><?= addslashes(string: $post->author) ?></em>
+                        <em><?= htmlspecialchars($post->author, ENT_QUOTES) ?></em>
                         <?php
                         if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                            <em>le <?= addslashes(string: $post->frenchCreationDate) ?></em>
+                            <em>le <?= htmlspecialchars($post->frenchCreationDate, ENT_QUOTES) ?></em>
                         <?php } else { ?>
-                            <br><em>Mis à jour le <?= addslashes(string: $post->frenchUpdateDate) ?></em>
+                            <br><em>Mis à jour le <?= htmlspecialchars($post->frenchUpdateDate, ENT_QUOTES) ?></em>
                         <?php } ?>
                     </p>
                 </div>
