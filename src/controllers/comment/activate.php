@@ -9,10 +9,11 @@ class ActivateComment
 {
     public function execute(): void
     {
-        if (!empty($_SESSION['id']) && isset($_GET['id']) && $_GET['id'] > 0) {
+        if (!empty($_SESSION['id']) && !empty(filter_input(INPUT_GET, 'id'))
+            && filter_input(INPUT_GET, 'id') > 0) {
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $commentRepository->activateComment(htmlspecialchars($_GET['id']));
+            $commentRepository->activateComment(htmlspecialchars(filter_input(INPUT_GET, 'id')));
         }
         header('Location: index.php?action=commentAdmin');
     }
