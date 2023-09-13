@@ -28,14 +28,14 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?= addslashes(string: $post->title) ?>"
+                                   value="<?= htmlspecialchars($post->title, ENT_QUOTES) ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?= addslashes(string: $post->chapo) ?>"
+                                   value="<?= htmlspecialchars($post->chapo, ENT_QUOTES) ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -56,7 +56,7 @@
                                     <?php } else { ?>
                                         >
                                     <?php } ?>
-                                    <?= addslashes(string: $category->name) ?>
+                                    <?= htmlspecialchars($category->name, ENT_QUOTES) ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -66,7 +66,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= addslashes(string: $post->content) ?></textarea>
+                                      required><?= htmlspecialchars($post->content, ENT_QUOTES) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />

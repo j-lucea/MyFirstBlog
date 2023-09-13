@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?= addslashes($title) ?></span>
+                    <span class="subheading"><?= htmlspecialchars($title, ENT_QUOTES) ?></span>
                 </div>
             </div>
         </div>
@@ -32,13 +32,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title"><?= addslashes(string: $post->title) ?></h5>
-                        <p class="card-text">Publié par <em><?= addslashes(string: $post->author) ?>
+                        <h5 class="card-title"><?= htmlspecialchars($post->title, ENT_QUOTES) ?></h5>
+                        <p class="card-text">Publié par <em><?= htmlspecialchars($post->author, ENT_QUOTES) ?>
                             <?php
                             if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                le <?= addslashes(string: $post->frenchCreationDate) ?>
+                                le <?= htmlspecialchars($post->frenchCreationDate, ENT_QUOTES) ?>
                             <?php } else { ?>
-                                <br>Mis à jour le <?= addslashes(string: $post->frenchUpdateDate) ?>
+                                <br>Mis à jour le <?= htmlspecialchars($post->frenchUpdateDate, ENT_QUOTES) ?>
                             <?php } ?>
                         </p>
                         <a href="index.php?action=post&id=<?= urlencode($post->id) ?>"
