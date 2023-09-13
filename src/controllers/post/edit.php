@@ -33,7 +33,7 @@ class EditPost
 
             $post = $postRepository->getPost($_GET['id']);
 
-            require('templates/editPost.php');
+            require 'templates/editPost.php';
         }
     }
 }

@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>My First Blog</h1>
-                    <span class="subheading"><?= htmlentities($title) ?></span>
+                    <span class="subheading"><?= strip_tags($title) ?></span>
                 </div>
             </div>
         </div>
@@ -36,14 +36,14 @@
                             <label for="chapo">Chapô</label>
                         </div>
                         <div class="form-floating">
-                            <select class="form-select" name="category" required>
+                            <select class="form-select" name="category">
                                 <option value=0 selected>Choississez une catégorie
                                 </option>
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= htmlentities($category->id) ?>>
-                                    <?= htmlentities($category->name) ?>
+                                <option value=<?= strip_tags($category->id) ?>>
+                                    <?= strip_tags($category->name) ?>
                                 </option>
                                     <?php
                                 }
@@ -74,4 +74,4 @@
 </main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php') ?>
+<?= require 'layout.php' ?>

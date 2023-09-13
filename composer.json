@@ -1,8 +1,11 @@
 {
-    "require-dev": {
-        "squizlabs/php_codesniffer": "*"
-    },
-    "require": {
-        "phpmailer/phpmailer": "^6.8"
-    }
+    "name": "jlucea/my-first-blog",
+    "description": "An introduction to my professional life",
+    "authors": [
+        {
+            "name": "j-lucea",
+            "email": "jonathan.lucea@gmail.com"
+        }
+    ],
+    "require": {}
 }

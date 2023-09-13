@@ -27,15 +27,15 @@ class Login
                     }
                 } else {
                     $errorMessage = 'Mot de passe incorrect';
-                    require('templates/login.php');
+                    require 'templates/login.php';
                 }
             } else {
                 $errorMessage = 'Les informations envoyées
                     ne permettent pas de vous identifier';
-                require('templates/login.php');
+                require 'templates/login.php';
             }
         } else {
-                require('templates/login.php');
+                require 'templates/login.php';
         }
     }
     private function openSession($user): void

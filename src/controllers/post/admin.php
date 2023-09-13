@@ -14,6 +14,6 @@ class PostAdmin
         $postRepository->connection = new DatabaseConnection();
         $posts = $postRepository->getPosts();
 
-        require('templates/postAdmin.php');
+        require 'templates/postAdmin.php';
     }
 }

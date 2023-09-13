@@ -30,15 +30,15 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= htmlentities($comment->content) ?></textarea>
+                                      required><?= strip_tags($comment->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
                         <input type="hidden" id="postId" name="postId"
-                               value="<?= htmlentities($comment->post) ?>" />
+                               value="<?= strip_tags($comment->post) ?>" />
                         <!-- Return link -->
                         <a class="btn btn-primary text-uppercase"
-                           href="index.php?action=post&id=<?= htmlentities($comment->post) ?>">
+                           href="index.php?action=post&id=<?= strip_tags($comment->post) ?>">
                             Retour</a>
                         <!-- Submit Button-->
                         <button class="btn btn-success text-uppercase"
@@ -53,4 +53,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php') ?>
+<?= require 'layout.php' ?>

@@ -13,6 +13,6 @@ class UserAdmin
         $userRepository = new UserRepository();
         $userRepository->connection = $connection;
         $users = $userRepository->getUsers();
-        require('templates/userAdmin.php');
+        require 'templates/userAdmin.php';
     }
 }

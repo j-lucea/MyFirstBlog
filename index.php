@@ -2,7 +2,7 @@
 
 session_start();
 
-/*require __DIR__ . '/vendor/autoload.php';*/
+require_once 'vendor/autoload.php';
 
 require_once 'src/controllers/comment/add.php';
 require_once 'src/controllers/comment/activate.php';
@@ -41,26 +41,14 @@ use Application\Controllers\User\Admin\UserAdmin;
 use Application\Controllers\User\Delete\DeleteUser;
 
 /*$get['action'] = htmlspecialchars($_GET['action']);*/
-if (isset($_GET)) {
-    $get = $_GET;
-} else {
-    $get = '';
-}
+$get = $_GET ?? '';
 
-if (isset($post)) {
-    $post = $_POST;
-} else {
-    $post = '';
-}
+$post = $_POST ?? '';
 
-if (!empty($_SESSION)) {
-    $session = $_SESSION;
-} else {
-    $session = '';
-}
+$session = $_SESSION ?? '';
 
 try {
-    if ($get['action'] !== '') {
+    if ($get) {
         if ($get['action'] === 'login' && empty($session['id'])) {
             (new Login())->execute();
         } elseif ($get['action'] === 'logout') {
@@ -77,8 +65,11 @@ try {
         } elseif ($get['action'] === 'addComment') {
             if (isset($get['id']) && $get['id'] > 0 && !empty($session['id'])
                 && !empty($post['comment'])) {
-                (new AddComment())->execute(htmlspecialchars($get['id']),
-                    htmlspecialchars($session['id']), htmlspecialchars($post['comment']));
+                (new AddComment())->execute(
+                    htmlspecialchars($get['id']),
+                    htmlspecialchars($session['id']),
+                    htmlspecialchars($post['comment'])
+                );
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }

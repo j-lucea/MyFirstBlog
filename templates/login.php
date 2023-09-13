@@ -1,4 +1,4 @@
-<?php $title = "Connexion";?>
+<?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
 <!-- Page Header-->
@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?= htmlentities($title) ?></h1>
+                    <h1><?= strip_tags($title) ?></h1>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <!-- If error, we show it -->
                 <?php if (!empty($errorMessage)) : ?>
                     <div class="alert alert-danger" role="alert">
-                        <?= htmlentities($errorMessage) ?>
+                        <?= strip_tags($errorMessage) ?>
                     </div>
                 <?php endif; ?>
                 <div class="form-floating">
@@ -48,4 +48,4 @@
 </main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php') ?>
+<?= require 'layout.php' ?>

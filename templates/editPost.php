@@ -28,14 +28,14 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?= htmlentities($post->title) ?>"
+                                   value="<?= strip_tags($post->title) ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?= htmlentities($post->chapo) ?>"
+                                   value="<?= strip_tags($post->chapo) ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -50,13 +50,13 @@
                                 <?php
                                 foreach ($categories as $category) {
                                     ?>
-                                <option value=<?= htmlentities($category->id) ?>
+                                <option value=<?= strip_tags($category->id) ?>
                                     <?php if ($category->id == $post->category) { ?>
                                         selected>
                                     <?php } else { ?>
                                         >
                                     <?php } ?>
-                                    <?= htmlentities($category->name) ?>
+                                    <?= strip_tags($category->name) ?>
                                 </option>
                                 <?php } ?>
                             </select>
@@ -66,7 +66,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?= htmlentities($post->content) ?></textarea>
+                                      required><?= strip_tags($post->content) ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
@@ -85,4 +85,4 @@
 </main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php') ?>
+<?= require 'layout.php' ?>

@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php htmlentities($title) ?></span>
+                    <span class="subheading"><?= strip_tags($title) ?></span>
                 </div>
             </div>
         </div>
@@ -32,13 +32,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title"><?= htmlentities($post->title); ?></h5>
-                        <p class="card-text">Publié par <em><?= htmlentities($post->author) ?>
+                        <h5 class="card-title"><?= strip_tags($post->title) ?></h5>
+                        <p class="card-text">Publié par <em><?= strip_tags($post->author) ?>
                             <?php
                             if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                le <?= htmlentities($post->frenchCreationDate) ?>
+                                le <?= strip_tags($post->frenchCreationDate) ?>
                             <?php } else { ?>
-                                <br>Mis à jour le <?= htmlentities($post->frenchUpdateDate) ?>
+                                <br>Mis à jour le <?= strip_tags($post->frenchUpdateDate) ?>
                             <?php } ?>
                         </p>
                         <a href="index.php?action=post&id=<?= urlencode($post->id) ?>"
@@ -65,4 +65,4 @@
 </main>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('layout.php') ?>
+<?= require 'layout.php' ?>
