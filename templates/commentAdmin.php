@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?= htmlspecialchars(string: $title) ?></span>
+                    <span class="subheading"><?= htmlspecialchars($title) ?></span>
                 </div>
             </div>
         </div>
@@ -29,7 +29,8 @@
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($comment->author, ENT_QUOTES) ?></h5>
                                 <p class="card-text"><?= htmlspecialchars($comment->content, ENT_QUOTES) ?></p>
-                                <p class="card-text">Publié par <em><?= htmlspecialchars($comment->author, ENT_QUOTES) ?><br>
+                                <p class="card-text">Publié par
+                                    <em><?= htmlspecialchars($comment->author, ENT_QUOTES) ?><br>
                                         <?php
                                         if ($comment->frenchCreationDate == $comment->frenchUpdateDate) { ?>
                                             le <?= htmlspecialchars($comment->frenchCreationDate, ENT_QUOTES) ?>
