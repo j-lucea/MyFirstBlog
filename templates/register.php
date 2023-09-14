@@ -20,14 +20,14 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <?php if (isset($successMessage)) { ?>
                 <div class="alert alert-success" role="alert">
-                    <?php $successMessage; ?>
+                    <?php echo $successMessage; ?>
                 </div>
                     <?php header("refresh:2;url=index.php"); ?>
                 <?php } else { ?>
                 <!-- If error, we show it -->
                     <?php if (isset($errorMessage)) : ?>
                     <div class="alert alert-danger" role="alert">
-                        <?php $errorMessage; ?>
+                        <?php echo $errorMessage; ?>
                     </div>
                     <?php endif; ?>
                 <div class="my-5">

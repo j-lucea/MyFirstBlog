@@ -28,14 +28,14 @@
                         <div class="form-floating">
                             <input class="form-control" id="title"
                                    name="title" type="text"
-                                   value="<?php $post->title; ?>"
+                                   value="<?php echo $post->title; ?>"
                                    maxlength="50" required/>
                             <label for="title">Titre</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="chapo"
                                    name="chapo" type="text"
-                                   value="<?php $post->chapo; ?>"
+                                   value="<?php echo $post->chapo; ?>"
                                    maxlength="255" required/>
                             <label for="chapo">Chapô</label>
                         </div>
@@ -66,7 +66,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?php $post->content; ?></textarea>
+                                      required><?php echo $post->content; ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />

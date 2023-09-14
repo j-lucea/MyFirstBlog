@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php $title; ?></span>
+                    <span class="subheading"><?php echo $title; ?></span>
                 </div>
             </div>
         </div>
@@ -27,15 +27,15 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?php $comment->author; ?></h5>
-                                <p class="card-text"><?php $comment->content; ?></p>
+                                <h5 class="card-title"><?php echo $comment->author; ?></h5>
+                                <p class="card-text"><?php echo $comment->content; ?></p>
                                 <p class="card-text">Publié par
-                                    <em><?php $comment->author; ?><br>
+                                    <em><?php echo $comment->author; ?><br>
                                         <?php
                                         if ($comment->frenchCreationDate == $comment->frenchUpdateDate) { ?>
-                                            le <?php $comment->frenchCreationDate; ?>
+                                            le <?php echo $comment->frenchCreationDate; ?>
                                         <?php } else { ?>
-                                            Modifié le <?php $comment->frenchUpdateDate; ?>
+                                            Modifié le <?php echo $comment->frenchUpdateDate; ?>
                                         <?php } ?>
                                 </p>
                                 <?php if (empty($comment->status)) : ?>

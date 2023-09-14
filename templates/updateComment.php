@@ -30,7 +30,7 @@
                             <textarea class="form-control" id="content"
                                       name="content"
                                       style="height: 12rem"
-                                      required><?php $comment->content; ?></textarea>
+                                      required><?php echo $comment->content; ?></textarea>
                             <label for="content">Contenu</label>
                         </div>
                         <br />
