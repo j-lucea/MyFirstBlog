@@ -14,39 +14,43 @@ class Contact
     /**
      * @throws Exception
      */
-    public function execute(): void
+    public function execute(?array $input): void
     {
-        if (isset($_POST['name']) && isset($_POST['email'])
-            && isset($_POST['subject']) && isset($_POST['message'])) {
-            /*SMTP server settings*/
-            $mail = new PHPMailer();
-            $mail->IsSMTP();
-            $mail->Host = 'ssl0.ovh.net';
-            $mail->Port = 465;
-            $mail->SMTPAuth = 1;
-            $mail->SMTPSecure = 'ssl';
-            $mail->Username   =  'contact@jlucea.com';
-            $mail->Password   =  'Nathan2018';
-            $mail->CharSet = 'UTF-8';
+        if ($input !== null) {
+            if (!empty($input['name']) && !empty($input['email'])
+                && !empty($input['subject']) && !empty($input['message'])) {
+                /*SMTP server settings*/
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->Host = 'ssl0.ovh.net';
+                $mail->Port = 465;
+                $mail->SMTPAuth = 1;
+                $mail->SMTPSecure = 'ssl';
+                $mail->Username = 'contact@jlucea.com';
+                $mail->Password = 'Nathan2018';
+                $mail->CharSet = 'UTF-8';
 
-            /*SMTP server connection*/
-            $mail->smtpConnect();
+                /*SMTP server connection*/
+                $mail->smtpConnect();
 
-            /*Email creation*/
-            $mail->From       = htmlspecialchars($_POST['email']);
-            $mail->FromName   = htmlspecialchars($_POST['name']);
-            $mail->AddAddress('contact@jlucea.com');
-            $mail->Subject    = htmlspecialchars($_POST['subject']);
-            $mail->WordWrap   = 50;
-            $mail->AltBody = htmlspecialchars($_POST['message']);
-            $mail->IsHTML(false);
-            $mail->MsgHTML($_POST['message']);
+                /*Email creation*/
+                $mail->From = htmlspecialchars($input['email']);
+                $mail->FromName = htmlspecialchars($input['name']);
+                $mail->AddAddress('contact@jlucea.com');
+                $mail->Subject = htmlspecialchars($input['subject']);
+                $mail->WordWrap = 50;
+                $mail->AltBody = htmlspecialchars($input['message']);
+                $mail->IsHTML(false);
+                $mail->MsgHTML($input['message']);
 
-            /*Sending Email*/
-            if (!$mail->send()) {
-                echo $mail->ErrorInfo;
+                /*Sending Email*/
+                if (!$mail->send()) {
+                    echo $mail->ErrorInfo;
+                } else {
+                    header('Location: index.php');
+                }
             } else {
-                header('Location: index.php');
+                throw new Exception('Les données du formulaire sont invalides.');
             }
         }
         require 'templates/contact.php';

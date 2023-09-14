@@ -23,17 +23,17 @@
                 <!-- Posts preview-->
                 <div class="post-preview">
                     <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
-                        <h2 class="post-title"><?php $post->title; ?></h2>
+                        <h2 class="post-title"><?php echo $post->title; ?></h2>
                         <h3 class="post-subtitle">
-                            <?php $post->chapo; ?>
+                            <?php echo $post->chapo; ?>
                         </h3>
                     </a>
                     <p class="post-meta">
                         Publié par
-                        <em><?php $post->author; ?></em>
+                        <em><?php echo $post->author; ?></em>
                         <?php
                         if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                            <em>le <?php $post->frenchCreationDate; ?></em>
+                            <em>le <?php echo $post->frenchCreationDate; ?></em>
                         <?php } else { ?>
                             <br><em>Mis à jour le <?php $post->frenchUpdateDate; ?></em>
                         <?php } ?>

@@ -27,24 +27,24 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title"><?php $user->firstName; ?>
-                                <?php $user->lastName; ?></h5>
+                                <h5 class="card-title"><?php echo $user->firstName; ?>
+                                <?php echo $user->lastName; ?></h5>
                                 <div class="p-3 border bg-light">
-                                    <img src="<?php $user->avatar; ?>" class="img-thumbnail"
-                                         alt="Avatar de <?php $user->firstName; ?>">
+                                    <img src="<?php echo $user->avatar; ?>" class="img-thumbnail"
+                                         alt="Avatar de <?php echo $user->firstName; ?>">
                                 </div>
                                         <p class="card-text">Identifiant :
-                                            <em><?php $user->login; ?><br>
-                                        Adresse mail : <em><?php $user->mail; ?><br>
+                                            <em><?php echo $user->login; ?><br>
+                                        Adresse mail : <em><?php echo $user->mail; ?><br>
                                         Rôle : <em><?php if ($user->role) {
                                             ?>Administrateur
                                                    <?php } else {
                                                         ?>Utilisateur<?php
                                                    } ?><br>
-                                        Date de création :  le <?php $user->frenchCreationDate; ?>
+                                        Date de création :  le <?php echo $user->frenchCreationDate; ?>
                                     <?php
                                     if ($user->frenchCreationDate != $user->frenchUpdateDate) { ?>
-                                            Dernière modification :  le <?php $user->frenchUpdateDate; ?>
+                                            Dernière modification :  le <?php echo $user->frenchUpdateDate; ?>
                                     <?php } ?>
                                 </p>
                                 <a href="index.php?action=deleteUser&id=<?= urlencode($user->id) ?>"
