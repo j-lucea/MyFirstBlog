@@ -7,7 +7,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1><?php $title; ?></h1>
+                    <h1><?= $title ?></h1>
                 </div>
             </div>
         </div>
@@ -23,19 +23,19 @@
                 <!-- Posts preview-->
                 <div class="post-preview">
                     <a href="index.php?action=post&id=<?= urlencode($post->id) ?>">
-                        <h2 class="post-title"><?php echo $post->title; ?></h2>
+                        <h2 class="post-title"><?= $post->title ?></h2>
                         <h3 class="post-subtitle">
-                            <?php echo $post->chapo; ?>
+                            <?= $post->chapo ?>
                         </h3>
                     </a>
                     <p class="post-meta">
                         Publié par
-                        <em><?php echo $post->author; ?></em>
+                        <em><?= $post->author ?></em>
                         <?php
                         if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                            <em>le <?php echo $post->frenchCreationDate; ?></em>
+                            <em>le <?= $post->frenchCreationDate ?></em>
                         <?php } else { ?>
-                            <br><em>Mis à jour le <?php $post->frenchUpdateDate; ?></em>
+                            <br><em>Mis à jour le <?= $post->frenchUpdateDate ?></em>
                         <?php } ?>
                     </p>
                 </div>

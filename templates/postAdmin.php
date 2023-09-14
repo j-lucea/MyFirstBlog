@@ -8,7 +8,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Administration</h1>
-                    <span class="subheading"><?php $title; ?></span>
+                    <span class="subheading"><?= $title ?></span>
                 </div>
             </div>
         </div>
@@ -32,13 +32,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title"><?php echo $post->title; ?></h5>
-                        <p class="card-text">Publié par <em><?php echo $post->author; ?>
+                        <h5 class="card-title"><?= $post->title ?></h5>
+                        <p class="card-text">Publié par <em><?= $post->author ?>
                             <?php
                             if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                le <?php echo $post->frenchCreationDate; ?>
+                                le <?= $post->frenchCreationDate ?>
                             <?php } else { ?>
-                                <br>Mis à jour le <?php echo $post->frenchUpdateDate; ?>
+                                <br>Mis à jour le <?= $post->frenchUpdateDate ?>
                             <?php } ?>
                         </p>
                         <a href="index.php?action=post&id=<?= urlencode($post->id) ?>"

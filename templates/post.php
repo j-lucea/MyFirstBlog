@@ -3,23 +3,23 @@
 <?php ob_start(); ?>
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url(<?php echo $post->image; ?>)">
+<header class="masthead" style="background-image: url(<?= $post->image ?>)">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1><?php echo $post->title; ?></h1>
-                    <h2 class="subheading"><?php echo $post->chapo; ?></h2>
+                    <h1><?= $post->title ?></h1>
+                    <h2 class="subheading"><?= $post->chapo ?></h2>
                     <span class="meta">
-                                Publié par <?php echo $post->author; ?>
+                                Publié par <?= $post->author ?>
                                 <?php
                                 if ($post->frenchCreationDate == $post->frenchUpdateDate) { ?>
-                                    <em>le <?php echo $post->frenchCreationDate; ?></em>
+                                    <em>le <?= $post->frenchCreationDate ?></em>
                                 <?php } else { ?>
-                                    <br><em>Mis à jour le <?php echo $post->frenchUpdateDate; ?></em>
+                                    <br><em>Mis à jour le <?= $post->frenchUpdateDate ?></em>
                                 <?php } ?>
                             </span><br>
-                    <h3>Catégorie : <?php echo $category->name; ?></h3>
+                    <h3>Catégorie : <?= $category->name ?></h3>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
     <article class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p><?php echo $post->content; ?></p>
+                <p><?= $post->content ?></p>
                 <?php
                 if ($comments) {
                     ?>
@@ -38,15 +38,15 @@
                     <?php
                     foreach ($comments as $comment) {
                         ?>
-                            <p><strong><?php echo $comment->author; ?></strong>
-                                le <?php echo $comment->frenchCreationDate; ?>
+                            <p><strong><?= $comment->author ?></strong>
+                                le <?= $comment->frenchCreationDate ?>
                             <?php if (!empty($_SESSION) && $comment->author == $_SESSION['firstName']) {
                                 ?>(<a
                                         href="index.php?action=updateComment&id=<?=
                                         urlencode($comment->id) ?>">Modifier</a>)
                             <?php } ?>
                             </p>
-                            <p><?php echo $comment->content; ?></p>
+                            <p><?= $comment->content ?></p>
                             <?php
                     }
                 }
